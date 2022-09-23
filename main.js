@@ -1,0 +1,1 @@
+(()=>{"use strict";const t=((t,e,s,o,i)=>{const h={title:"Wash Clothes",details:"Put clothes in the washing machine",priority:"high",dueDate:"now",project:"Chours"};return Object.assign(h)})();console.log(t)})();
