@@ -1,1 +1,1 @@
-(()=>{"use strict";const t=((t,e,s,o,i)=>{const h={title:"Wash Clothes",details:"Put clothes in the washing machine",priority:"high",dueDate:"now",project:"Chours"};return Object.assign(h)})();console.log(t)})();
+(()=>{"use strict";const e=((e,t,o,s,n)=>{const r={title:"Wash Clothes",details:"Put clothes in the washing machine",priority:"high",dueDate:"now",project:"Chours"};return Object.assign(r,{get:e=>{if(r.hasOwnProperty(e))return r[e];console.error(`The property ${e} does not exist in undefined`)}})})();console.log(e),console.log(e.get("Time"))})();

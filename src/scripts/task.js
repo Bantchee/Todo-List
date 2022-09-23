@@ -13,7 +13,30 @@ export const task = (title, details, priority, dueDate, project) => {
         project,
     }
 
+    // CRUD : Create, Read, Update, Delete
+
+    const get = (property) => {
+        if(state.hasOwnProperty(property)) {
+            return state[property] 
+        } else {
+            console.error(`The property ${property} does not exist`);
+        }
+    };
+
+    const set = (property, value) => {
+        if(state.hasOwnProperty(property)) {
+            state[property] = value;
+        } else {
+            console.error(`The property ${property} does not exist`);
+        }
+    };
+
+    // Change Project
+    // Delete Task
+
     return Object.assign(
-        state
+        state,
+        {get},
+        {set}
     );
 };
