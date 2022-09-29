@@ -75,6 +75,7 @@ export const page = () => {
             // A : Github link
                 const githubLink = createElement('a', footer, 'github-link');
                 githubLink.setAttribute('href', 'https://github.com/Bantchee');
+                githubLink.setAttribute('target', '_blank');
                 // Img : Github
                 const githubImg = createElement('img', githubLink);
                 githubImg.setAttribute('src', githubSvg);
