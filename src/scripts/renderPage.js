@@ -1,5 +1,10 @@
 import menuSvg from '../icons/menu.svg';
 import githubSvg from '../icons/github.svg';
+import {directory} from './directory';
+import arrowSvg from '../icons/arrow.svg';
+import inboxSvg from '../icons/inbox.svg';
+import todaySvg from '../icons/star.svg';
+import upcomingSvg from '../icons/calendar.svg';
 
 export const page = () => {
     const state = {
@@ -12,7 +17,7 @@ export const page = () => {
 
     const render = () => {
         clear();
-        state.sideBar = createElement('aside', document.body);
+        state.sideBar = renderSideBar();
         state.main = createElement('div', document.body, 'main');
         state.header = renderHeader();
         state.content = createElement('div', state.main, 'content');
@@ -44,10 +49,10 @@ export const page = () => {
     const createElement = (child, parent, clss=null, id=null) => {
         const element = document.createElement(child);
         parent.appendChild(element);
-        if (clss !== null) {
+        if(clss !== null) {
             element.classList.add(clss);
         }
-        if (id !== null) {
+        if(id !== null) {
             element.setAttribute('id', id);
         } 
         return element;
@@ -64,7 +69,47 @@ export const page = () => {
             const title = createElement('h1', header, 'title');
             title.textContent = "Todo List";
         return header;
-    }
+    };
+
+    // Render Elements of sidebar
+    const renderSideBar = () => {
+        const sideBar = createElement('aside', document.body);
+
+            // Div HomeContainer
+            const homeContainer = createElement('div', sideBar, 'home-container');
+                // Btn : ^ Home
+                const homeBtn = createElement('button', homeContainer, 'home');
+                    // Img
+                    const homeArrow = createElement('img', homeBtn, 'arrow');
+                    homeArrow.setAttribute('src', arrowSvg);
+                    // Para
+                    const homeText = createElement('p', homeBtn, 'text');
+                    homeText.textContent = "Home";
+                // Div : Default Projects
+                const defaultProjects = createElement('div', homeContainer, 'default-projects')
+                    // Loop throw directory.createProjects 
+                    // Render each Project as a btn
+                    for(let project in directory.defaultProjects) {
+                        console.log(`${project}: `, directory.defaultProjects[project]);
+                        // Btn
+                        const projectBtn = createElement('button', defaultProjects, project);
+                            // Img
+                            const img = createElement('img', projectBtn);
+                            if(project === 'inbox') {
+                                img.setAttribute('src', inboxSvg);
+                            }
+                            else if(project === 'today') {
+                                img.setAttribute('src', todaySvg);
+                            }
+                            else if(project === 'upcoming') {
+                                img.setAttribute('src', upcomingSvg);
+                            }
+                            // Para
+                            const text = createElement('p', projectBtn);
+                            text.textContent = project.slice(0,1).toUpperCase() + project.slice(1);
+                    }
+        return sideBar;
+    };
 
     // Render Element of Footer
     const renderFooter = () => {

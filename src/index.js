@@ -3,11 +3,9 @@ import {page} from './scripts/renderPage';
 import './styles/index.css';
 
 const t = task('Wash Clothes', 'Put clothes in the washing machine', 'high', 'now', 'Chours');
-console.log(t);
 
 const p = page();
 p.render();
-console.log(p);
 
 // State
     // directory.js module

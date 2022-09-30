@@ -1,10 +1,10 @@
 import { task } from "./task";
 
 // In > Out : String List-of-Tasks > Object
-export const project = (name, tasks) => {
-    state = {
+export const project = (name) => {
+    const state = {
         name,
-        tasks,
+        tasks: null,
     };
 
     // Get property
