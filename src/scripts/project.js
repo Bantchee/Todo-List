@@ -39,8 +39,16 @@ export const project = (name) => {
     }
 
     // Delete Task
+    const deleteTask = (task) => {
+        tasks.filter(x => {
+            x.id === task.id; 
+        });
+    }
 
     return Object.assign(
         state,
+        {createTask},
+        {addTask},
+        {deleteTask}
     );
 };

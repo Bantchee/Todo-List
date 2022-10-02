@@ -11,9 +11,12 @@ export const task = (title, details, priority, dueDate, project) => {
         priority,
         dueDate,
         project,
+        id: genRandomId(),
     }
 
     // CRUD : Create, Read, Update, Delete
+
+    const genRandomId = () => Math.random();
 
     const get = (property) => {
         if(state.hasOwnProperty(property)) {
