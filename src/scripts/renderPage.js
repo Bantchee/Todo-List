@@ -50,7 +50,14 @@ export const page = () => {
         const element = document.createElement(child);
         parent.appendChild(element);
         if(clss !== null) {
-            element.classList.add(clss);
+            if(Array.isArray(clss)) {
+                for(let i = 0; i < clss.length; i++) {
+                    element.classList.add(clss[i]);
+                }
+            } 
+            else {
+                element.classList.add(clss);
+            }
         }
         if(id !== null) {
             element.setAttribute('id', id);
@@ -90,7 +97,6 @@ export const page = () => {
                     // Loop throw directory.createProjects 
                     // Render each Project as a btn
                     for(let project in directory.defaultProjects) {
-                        console.log(`${project}: `, directory.defaultProjects[project]);
                         // Btn
                         const projectBtn = createElement('button', defaultProjects, project);
                             // Img
