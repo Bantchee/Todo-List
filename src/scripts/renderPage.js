@@ -5,6 +5,7 @@ import arrowSvg from '../icons/arrow.svg';
 import inboxSvg from '../icons/inbox.svg';
 import todaySvg from '../icons/star.svg';
 import upcomingSvg from '../icons/calendar.svg';
+import cirlcePlusSvg from '../icons/circlePlus.svg';
 
 export const page = () => {
     const state = {
@@ -33,6 +34,7 @@ export const page = () => {
 
     const update = () => {
         const menuBtn = state.header.querySelector('button');
+        const addProject = state.sideBar.querySelector('.add-project');
         menuBtn.addEventListener('click', () => {
             const aside = document.body.querySelector('aside');
             if(aside === null) {
@@ -41,6 +43,28 @@ export const page = () => {
             } else {
                 document.body.removeChild(aside);
             }
+        });
+
+        document.body.classList.contai
+
+        addProject.addEventListener('click', () => {
+            // If div.add-project has active class
+            if(addProject.classList.contains('active')) {
+                // delete inputAddProject
+                addProject.removeChild(document.querySelector('.input-container'));
+                // remove active class
+                addProject.classList.remove('active');
+            }
+            else {
+                // render inputAddProject
+                const inputAddProject = renderInputAddProject(addProject);
+                // add active class
+                addProject.classList.add('active');
+
+                // AddBtn Event Listner
+                // CancelBtn Event Listner
+            }  
+                
         });
     }
 
@@ -145,13 +169,39 @@ export const page = () => {
                             // Btn : Edit
                             // Btn : Delete
                     }
-                    // Render Create New Project Form
-
+                // Render Create New Project Form
+                const addProjectsContainer = addProjectElement(projectsContainer);
         return sideBar;
     };
 
-    const createProjectElement = () => {
+    const addProjectElement = (project) => {
+        // Div : createProjectContainer
+        const addProjectsContainer = createElement('div', project, 'add-project-container');
+            // Div : Title-Container
+            const titleContainer = createElement('div', addProjectsContainer, 'add-project');
+                // Img : Plus in Circle
+                const img = createElement('img', titleContainer);
+                img.setAttribute('src', cirlcePlusSvg);
+                // Para : Add Project
+                const title = createElement('p', titleContainer);
+                title.textContent = 'Add Project';
+        return addProjectsContainer;        
+    };
 
+    const renderInputAddProject = (parent) => {
+         // Div : Input Container
+        const inputContainer = createElement('div', parent, 'input-container');
+            // Input 
+            const input = createElement('input', inputContainer);
+            // Div : Btn Container
+            const btnContainer = createElement('div', inputContainer, 'buttons');
+                // Btn : Add
+                const addBtn = createElement('button', btnContainer);
+                addBtn.textContent = "Add";
+                // Btn : Cancel 
+                const cancleBtn = createElement('button', btnContainer);
+                cancleBtn.textContent = "Cancel";
+        return inputContainer;
     };
 
     // Render Element of Footer
