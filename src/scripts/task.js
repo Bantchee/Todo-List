@@ -11,7 +11,7 @@ export const task = (title, details, priority, dueDate, project) => {
         priority,
         dueDate,
         project,
-        id: genRandomId(),
+        id: null,
     }
 
     // CRUD : Create, Read, Update, Delete
@@ -36,6 +36,8 @@ export const task = (title, details, priority, dueDate, project) => {
 
     // Change Project
     // Delete Task
+
+    state.id = genRandomId();
 
     return Object.assign(
         state,

@@ -85,7 +85,7 @@ export const page = () => {
             // Div HomeContainer
             const homeContainer = createElement('div', sideBar, 'home-container');
                 // Btn : ^ Home
-                const homeBtn = createElement('button', homeContainer, 'home');
+                const homeBtn = createElement('button', homeContainer, 'title');
                     // Img
                     const homeArrow = createElement('img', homeBtn, 'arrow');
                     homeArrow.setAttribute('src', arrowSvg);
@@ -93,7 +93,7 @@ export const page = () => {
                     const homeText = createElement('p', homeBtn, 'text');
                     homeText.textContent = "Home";
                 // Div : Default Projects
-                const defaultProjects = createElement('div', homeContainer, 'default-projects')
+                const defaultProjects = createElement('div', homeContainer, 'default-projects');
                     // Loop throw directory.createProjects 
                     // Render each Project as a btn
                     for(let project in directory.defaultProjects) {
@@ -114,7 +114,44 @@ export const page = () => {
                             const text = createElement('p', projectBtn);
                             text.textContent = project.slice(0,1).toUpperCase() + project.slice(1);
                     }
+            // Div Projects
+                // Divs : List-of-Projects
+                // Div : Add Project
+                    // Input
+                    // Div
+                        // Btn : Add
+                        // Btn : Cancel
+            // Div Projects
+            const projectsContainer = createElement('div', sideBar, 'project-container');
+                // Btn : ^ project
+                const projectBtn = createElement('button', projectsContainer, 'title');
+                    // Img
+                    const projectArrow = createElement('img', projectBtn, 'arrow');
+                    projectArrow.setAttribute('src', arrowSvg);
+                    // Para
+                    const projectText = createElement('p', projectBtn, 'text');
+                    projectText.textContent = "Project";
+                // Div : Created Projects
+                const createdProjects = createElement('div', projectsContainer, 'created-projects')
+
+                    // render created projects in directory
+                    for(let project in directory.createdProjects) {
+                        // Btn
+                        const projectBtn = createElement('button', createdProjects, project);
+                            //Img
+                            // Para
+                            const text = createElement('p', projectBtn);
+                            text.textContent = project.slice(0,1).toUpperCase() + project.slice(1);
+                            // Btn : Edit
+                            // Btn : Delete
+                    }
+                    // Render Create New Project Form
+
         return sideBar;
+    };
+
+    const createProjectElement = () => {
+
     };
 
     // Render Element of Footer

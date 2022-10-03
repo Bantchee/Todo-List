@@ -11,7 +11,10 @@ export const directory = (() => {
             today: project('today'),
             upcoming: project('upcoming'),
         },
-        createProjects: {},
+        createdProjects: {
+            temp1: project('temp1'), 
+            temp2: project('temp2'),
+        },
     };
 
     return Object.assign(
