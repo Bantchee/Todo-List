@@ -6,6 +6,8 @@ import inboxSvg from '../icons/inbox.svg';
 import todaySvg from '../icons/star.svg';
 import upcomingSvg from '../icons/calendar.svg';
 import cirlcePlusSvg from '../icons/circlePlus.svg';
+import deleteSvg from '../icons/trash.svg';
+import editSvg from '../icons/edit.svg';
 
 export const page = () => {
     const state = {
@@ -182,14 +184,24 @@ export const page = () => {
 
                     // render created projects in directory
                     for(let project in directory.createdProjects) {
-                        // Btn
-                        const projectBtn = createElement('button', createdProjects, project);
-                            //Img
-                            // Para
-                            const text = createElement('p', projectBtn);
-                            text.textContent = project.slice(0,1).toUpperCase() + project.slice(1);
+                        // Div : divProject
+                        const divProject = createElement('div', createdProjects)
+                            // Btn : Project
+                            const projectBtn = createElement('button', divProject, project);
+                                //Img
+                                // Para
+                                const projText = createElement('p', projectBtn);
+                                projText.textContent = project.slice(0,1).toUpperCase() + project.slice(1);
                             // Btn : Edit
+                            const editBtn = createElement('button', divProject, 'edit');
+                                //Img
+                                const editImg = createElement('img', editBtn);
+                                editImg.setAttribute('src', editSvg);
                             // Btn : Delete
+                            const deleteBtn = createElement('button', divProject, 'delete');
+                                // Img
+                                const deleteImg = createElement('img', deleteBtn);
+                                deleteImg.setAttribute('src', deleteSvg);
                     }
                 // Render Create New Project Form
                 const addProjectsContainer = addProjectElement(projectsContainer);
