@@ -17,7 +17,15 @@ export const directory = (() => {
         },
     };
 
+    const createProject = (name) => {
+        const lowName = name.toLowerCase();
+        const newProject = project(lowName);
+        state.createdProjects[lowName] = newProject;
+        return newProject;
+    };
+
     return Object.assign(
         state,
+        {createProject}
     );
 })();

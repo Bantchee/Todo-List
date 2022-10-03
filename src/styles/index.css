@@ -47,7 +47,7 @@ aside button {
     font-size: 1.25em;
 }
 
-aside button.title:hover {
+aside button:hover {
     font-weight: bold;
     /* background-color: var(--light-grey); */
 }

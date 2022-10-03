@@ -35,6 +35,7 @@ export const page = () => {
     const update = () => {
         const menuBtn = state.header.querySelector('button');
         const addProject = state.sideBar.querySelector('.add-project');
+        const addProjectBtn = state.sideBar.querySelector('.add-project button');
         menuBtn.addEventListener('click', () => {
             const aside = document.body.querySelector('aside');
             if(aside === null) {
@@ -45,24 +46,45 @@ export const page = () => {
             }
         });
 
-        document.body.classList.contai
-
-        addProject.addEventListener('click', () => {
+        addProjectBtn.addEventListener('click', () => {
             // If div.add-project has active class
-            if(addProject.classList.contains('active')) {
+            if(addProjectBtn.classList.contains('active')) {
                 // delete inputAddProject
                 addProject.removeChild(document.querySelector('.input-container'));
                 // remove active class
-                addProject.classList.remove('active');
+                addProjectBtn.classList.remove('active');
             }
             else {
                 // render inputAddProject
                 const inputAddProject = renderInputAddProject(addProject);
                 // add active class
-                addProject.classList.add('active');
+                addProjectBtn.classList.add('active');
 
                 // AddBtn Event Listner
+                const addBtn = inputAddProject.querySelector('.add');
+                addBtn.addEventListener('click', () => {
+                    const input = inputAddProject.querySelector('input');
+                    
+                    if(input.value !== "") {
+                       directory.createProject(input.value);
+                       // delete inputAddProject
+                        addProject.removeChild(document.querySelector('.input-container'));
+                        // remove active class
+                        addProjectBtn.classList.remove('active');
+                        // render page
+                        render();
+                    }
+                    
+                });
+
                 // CancelBtn Event Listner
+                const cancelBtn = inputAddProject.querySelector('.cancel');
+                cancelBtn.addEventListener('click', () => {
+                    // delete inputAddProject
+                    addProject.removeChild(document.querySelector('.input-container'));
+                    // remove active class
+                    addProjectBtn.classList.remove('active');
+                });
             }  
                 
         });
@@ -179,12 +201,14 @@ export const page = () => {
         const addProjectsContainer = createElement('div', project, 'add-project-container');
             // Div : Title-Container
             const titleContainer = createElement('div', addProjectsContainer, 'add-project');
-                // Img : Plus in Circle
-                const img = createElement('img', titleContainer);
-                img.setAttribute('src', cirlcePlusSvg);
-                // Para : Add Project
-                const title = createElement('p', titleContainer);
-                title.textContent = 'Add Project';
+                // Btn : addProjectBtn
+                const addProjectBtn = createElement('button', titleContainer);
+                    // Img : Plus in Circle
+                    const img = createElement('img', addProjectBtn);
+                    img.setAttribute('src', cirlcePlusSvg);
+                    // Para : Add Project
+                    const title = createElement('p', addProjectBtn);
+                    title.textContent = 'Add Project';
         return addProjectsContainer;        
     };
 
@@ -196,10 +220,10 @@ export const page = () => {
             // Div : Btn Container
             const btnContainer = createElement('div', inputContainer, 'buttons');
                 // Btn : Add
-                const addBtn = createElement('button', btnContainer);
+                const addBtn = createElement('button', btnContainer, 'add');
                 addBtn.textContent = "Add";
                 // Btn : Cancel 
-                const cancleBtn = createElement('button', btnContainer);
+                const cancleBtn = createElement('button', btnContainer, 'cancel');
                 cancleBtn.textContent = "Cancel";
         return inputContainer;
     };
