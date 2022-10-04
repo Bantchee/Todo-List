@@ -6,16 +6,19 @@ import {project} from './project';
 
 export const directory = (() => {
     const state = {
-        defaultProjects: {
-            inbox: project('inbox'),
-            today: project('today'),
-            upcoming: project('upcoming'),
-        },
-        createdProjects: {
-            temp1: project('temp1'), 
-            temp2: project('temp2'),
-        },
+        defaultProjects: [
+            project('inbox'),
+            project('today'),
+            project('upcoming'),
+        ],
+        createdProjects: [
+            project('temp1'), 
+            project('temp2'),
+        ],
+        currentProject: null,
     };
+
+    state.currentProject = state.defaultProjects[0];
 
     const createProject = (name) => {
         const lowName = name.toLowerCase();

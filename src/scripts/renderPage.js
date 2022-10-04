@@ -23,10 +23,21 @@ export const page = () => {
         state.sideBar = renderSideBar();
         state.main = createElement('div', document.body, 'main');
         state.header = renderHeader();
-        state.content = createElement('div', state.main, 'content');
+        state.content = renderContent();
         state.footer = renderFooter();
+
+        setCurrentProject();
         update();
     };
+
+    const setCurrentProject = () => {
+        const projects = state.sideBar.querySelectorAll('button.project');
+        for(let i = 0; i < projects.length; i++) {
+            if(projects[i].querySelector('p').textContent.toLowerCase() == directory.currentProject.name) {
+                projects[i].classList.add('current-project') ;
+            }
+        }
+    }
 
     const clear = () => {
         while(document.body.firstChild) {
@@ -36,8 +47,47 @@ export const page = () => {
 
     const update = () => {
         const menuBtn = state.header.querySelector('button');
+        const projects = state.sideBar.querySelectorAll('button.project');
         const addProject = state.sideBar.querySelector('.add-project');
         const addProjectBtn = state.sideBar.querySelector('.add-project button');
+        const addTaskContainer = state.content.querySelector('.add-task-container');
+        const addTaskBtn = state.content.querySelector('.add-task-btn');
+
+        addTaskBtn.addEventListener('click', () => {
+            console.log('hello');
+            // If div.add-project has active class
+            if(addTaskBtn.classList.contains('active')) {
+                // delete inputAddProject
+                addTaskContainer.removeChild(state.content.querySelector('.input-container'));
+                // remove active class
+                addTaskBtn.classList.remove('active');
+            }
+            else {
+                // render input
+                renderAddTaskInput(state.content.querySelector('.add-task-container'));
+                // add active class
+                addTaskBtn.classList.add('active');
+            }    
+        });
+        
+        projects.forEach((projectElement, index) => {
+            projectElement.addEventListener('click', () => {
+                let projectState;
+                for(let i = 0; i < directory.defaultProjects.length; i++) {
+                    if(directory.defaultProjects[i].name == projectElement.querySelector('p').textContent.toLowerCase()) {
+                        projectState = directory.defaultProjects[i];
+                    }
+                }
+                for(let i = 0; i < directory.createdProjects.length; i++) {
+                    if(directory.createdProjects[i].name == projectElement.querySelector('p').textContent.toLowerCase()) {
+                        projectState = directory.createdProjects[i];
+                    }
+                }
+                directory.currentProject = projectState;
+                render();
+            });
+        });
+
         menuBtn.addEventListener('click', () => {
             const aside = document.body.querySelector('aside');
             if(aside === null) {
@@ -144,23 +194,24 @@ export const page = () => {
                 const defaultProjects = createElement('div', homeContainer, 'default-projects');
                     // Loop throw directory.createProjects 
                     // Render each Project as a btn
-                    for(let project in directory.defaultProjects) {
+                    for(let i = 0; i < directory.defaultProjects.length; i++) {
+                        let projectName = directory.defaultProjects[i].name;
                         // Btn
-                        const projectBtn = createElement('button', defaultProjects, project);
+                        const projectBtn = createElement('button', defaultProjects, ["project", projectName]);
                             // Img
                             const img = createElement('img', projectBtn);
-                            if(project === 'inbox') {
+                            if(projectName === 'inbox') {
                                 img.setAttribute('src', inboxSvg);
                             }
-                            else if(project === 'today') {
+                            else if(projectName === 'today') {
                                 img.setAttribute('src', todaySvg);
                             }
-                            else if(project === 'upcoming') {
+                            else if(projectName === 'upcoming') {
                                 img.setAttribute('src', upcomingSvg);
                             }
                             // Para
                             const text = createElement('p', projectBtn);
-                            text.textContent = project.slice(0,1).toUpperCase() + project.slice(1);
+                            text.textContent = projectName.slice(0,1).toUpperCase() + projectName.slice(1);
                     }
             // Div Projects
                 // Divs : List-of-Projects
@@ -183,15 +234,16 @@ export const page = () => {
                 const createdProjects = createElement('div', projectsContainer, 'created-projects')
 
                     // render created projects in directory
-                    for(let project in directory.createdProjects) {
+                    for(let i = 0; i < directory.createdProjects.length; i++) {
+                        let projectName = directory.createdProjects[i].name;
                         // Div : divProject
-                        const divProject = createElement('div', createdProjects)
+                        const divProject = createElement('div', createdProjects, 'project-div')
                             // Btn : Project
-                            const projectBtn = createElement('button', divProject, project);
+                            const projectBtn = createElement('button', divProject, ["project", projectName]);
                                 //Img
                                 // Para
                                 const projText = createElement('p', projectBtn);
-                                projText.textContent = project.slice(0,1).toUpperCase() + project.slice(1);
+                                projText.textContent = projectName.slice(0,1).toUpperCase() + projectName.slice(1);
                             // Btn : Edit
                             const editBtn = createElement('button', divProject, 'edit');
                                 //Img
@@ -238,6 +290,75 @@ export const page = () => {
                 const cancleBtn = createElement('button', btnContainer, 'cancel');
                 cancleBtn.textContent = "Cancel";
         return inputContainer;
+    };
+
+    const renderContent = () => {
+        const content = createElement('div', state.main, 'content');
+        // task
+        renderTasks(content);
+        
+        //Add Task
+        renderAddTask(content);
+        return content;
+    };
+
+    const renderTasks = (content) => {
+        console.log(directory.currentProject.name);
+        // Div Task Container
+        const taskContainer = createElement('div', content, 'task-container');
+        // // List of Tasks
+        for(let i = 0; i < directory.currentProject.tasks.length; i++) {
+            console.log(directory.currentProject.name);
+            // renderTask(project.tasks[i]);
+        }
+    }
+
+    const renderTask = (t) => {
+        const task = createElement('div', state.content, 'content');
+
+        return task;
+    };
+
+    const renderAddTask = (content) => {
+        // Div 
+        const div = createElement('div', content, 'add-task-container');
+            // Div : Add Task
+            const addTaskDiv = createElement('div', div, 'add-task-btn');
+                // Img : circlePlus
+                const circlePlusImg = createElement('img', addTaskDiv);
+                circlePlusImg.setAttribute('src', cirlcePlusSvg);
+                // P : Add Task
+                const text = createElement('p', addTaskDiv, 'text');
+                text.textContent = "Add Task";
+    };
+
+    const renderAddTaskInput = (parent) => {
+        // Div 
+        const container = createElement('div', parent, 'input-container');
+            // Input : Title
+            const titleInput = createElement('input', container);
+            // Input : Details
+            const detailInput = createElement('input', container);
+            // Div : Date-Project
+                // Div : Due Date
+                    // P
+                    // Input Type Date
+                // Div : Project
+                    // P : Project
+                    // Selector : Work
+            // Div : Priority-Add-Cancel
+                // Div : Priority
+                    // Div : Low
+                        // P : Low
+                    // Div : Medium
+                        // P : Medium
+                    // Div : High
+                        // P : High
+                // Div : Add-Cancel
+                    // Div : Add
+                        // P : Add
+                    // Div : Cancel
+                        // P : Cancel
     };
 
     // Render Element of Footer

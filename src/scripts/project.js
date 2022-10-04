@@ -4,7 +4,7 @@ import { task } from "./task";
 export const project = (name) => {
     const state = {
         name,
-        tasks: null,
+        tasks: [],
     };
 
     // Get property
@@ -26,7 +26,9 @@ export const project = (name) => {
     };
 
     // Create Task
-    const createTask = (title, details, priority, dueDate, project) => task(title, details, priority, dueDate, project);
+    const createTask = (title, details, priority, dueDate, project) => {
+        task(title, details, priority, dueDate, project);
+    }
 
     // Add Task
     const addTask = (task) => {
