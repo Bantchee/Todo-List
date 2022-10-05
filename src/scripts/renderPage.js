@@ -337,28 +337,61 @@ export const page = () => {
         const container = createElement('div', parent, 'input-container');
             // Input : Title
             const titleInput = createElement('input', container);
+            titleInput.setAttribute('placeholder', 'Title');
             // Input : Details
-            const detailInput = createElement('input', container);
+            const detailTextArea = createElement('textarea', container);
+            detailTextArea.setAttribute('placeholder', 'Details');
             // Div : Date-Project
+            const dateProjectDiv = createElement('div', container, 'date-project');
                 // Div : Due Date
+                const dueDateDiv = createElement('div', dateProjectDiv, 'due-date');
                     // P
+                    const dueDatePara = createElement('p', dueDateDiv);
+                    dueDatePara.textContent = 'Due Date:';
                     // Input Type Date
+                    const dueDateInput = createElement('input', dueDateDiv);
+                    dueDateInput.setAttribute('type', 'date');
                 // Div : Project
+                const projectDiv = createElement('div', dateProjectDiv, 'project');
                     // P : Project
-                    // Selector : Work
+                    const projectPara = createElement('p', projectDiv);
+                    projectPara.textContent = 'Project:';
+                    // Selector : directory list of createdprojects
+                    const projectSelector = createElement('select', projectDiv);
+                        // Temp
+                        const option = createElement('option', projectSelector);
+                        option.textContent = 'Work';
             // Div : Priority-Add-Cancel
+            const priorityAddCancelDiv = createElement('div', container, 'priority-add-cancel');
                 // Div : Priority
+                const priorityDiv = createElement('div', priorityAddCancelDiv, 'priority');
                     // Div : Low
+                    const lowPriorityDiv = createElement('div', priorityDiv, 'low');
                         // P : Low
+                        const lowPara = createElement('p', lowPriorityDiv);
+                        lowPara.textContent = 'Low';
                     // Div : Medium
+                    const mediumPriorityDiv = createElement('div', priorityDiv, 'medium');
                         // P : Medium
+                        const mediumPara = createElement('p', mediumPriorityDiv);
+                        mediumPara.textContent = 'Medium';
                     // Div : High
+                    const highPriorityDiv = createElement('div', priorityDiv, 'high');
                         // P : High
+                        const highPara = createElement('p', highPriorityDiv);
+                        highPara.textContent = 'High';
                 // Div : Add-Cancel
+                const addCancelDiv = createElement('div', priorityAddCancelDiv, 'add-cancel');
                     // Div : Add
+                    const addDiv = createElement('div', addCancelDiv, 'add');
                         // P : Add
+                        const addPara = createElement('p', addDiv);
+                        addPara.textContent = "Add";
                     // Div : Cancel
+                    const cancelDiv = createElement('div', addCancelDiv, 'cancel');
                         // P : Cancel
+                        const cancelPara = createElement('p', cancelDiv);
+                        cancelPara.textContent = "Cancel";
     };
 
     // Render Element of Footer
