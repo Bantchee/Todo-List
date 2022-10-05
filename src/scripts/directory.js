@@ -23,7 +23,7 @@ export const directory = (() => {
     const createProject = (name) => {
         const lowName = name.toLowerCase();
         const newProject = project(lowName);
-        state.createdProjects[lowName] = newProject;
+        state.createdProjects.push(newProject);
         return newProject;
     };
 
