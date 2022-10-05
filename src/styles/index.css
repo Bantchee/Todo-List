@@ -117,6 +117,29 @@ div.main div.content {
     background-color: var(--white);
 }
 
+div.main div.content .add-task-container {
+    display: flex;
+    flex-direction: column;
+}
+
+div.main div.content .add-task-container .add-task-btn {
+    width: 135px;
+
+    display: flex;
+    column-gap: 4px;
+    align-self: center;
+}
+
+div.main div.content .add-task-container .add-task-btn p {
+    font-size: 1.5em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+div.main div.content .add-task-container .add-task-btn img {
+    width: 24px;
+}
+
 div.main div.content .add-task-container .input-container {
     display: flex;
     flex-direction: column;
@@ -127,6 +150,17 @@ div.main div.content .add-task-container .input-container {
     border-radius: 4px;
     border-right: var(--blue) solid 4px;
     border-left: var(--blue) solid 4px;
+}
+
+div.main div.content .add-task-container .input-container input.title {
+    border-radius: 8px;
+    padding-left: 4px;
+}
+
+div.main div.content .add-task-container .input-container textarea{
+    height: 150px;
+    border-radius: 8px;
+    padding-left: 4px;
 }
 
 

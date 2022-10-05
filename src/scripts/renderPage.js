@@ -336,7 +336,7 @@ export const page = () => {
         // Div 
         const container = createElement('div', parent, 'input-container');
             // Input : Title
-            const titleInput = createElement('input', container);
+            const titleInput = createElement('input', container, 'title');
             titleInput.setAttribute('placeholder', 'Title');
             // Input : Details
             const detailTextArea = createElement('textarea', container);
