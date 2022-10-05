@@ -5,6 +5,12 @@
     --dark-grey: #454545;
     --black: #000000;
     --black-tint: rgba(0, 0, 0, 0.50);
+    --blue: #0085FF;
+    --blue-light: #badcfc;
+    --orange: #FF9900;
+    --orange-light: #FAE7CC;
+    --red: #FF0000;
+    --red-light: #FCCECE;
     --github-img-size: 32px;
 }
 
@@ -107,9 +113,22 @@ div.main header h1.title {
 
 div.main div.content {
     flex: 4;
-    padding: 8px;
+    padding: 16px 64px;
     background-color: var(--white);
 }
+
+div.main div.content .add-task-container .input-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+
+    background-color: var(--light-grey);
+    padding: 16px 24px;
+    border-radius: 4px;
+    border-right: var(--blue) solid 4px;
+    border-left: var(--blue) solid 4px;
+}
+
 
 div.main footer {
     flex: 1;
