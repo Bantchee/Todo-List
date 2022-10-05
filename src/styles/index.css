@@ -163,6 +163,29 @@ div.main div.content .add-task-container .input-container textarea{
     padding-left: 4px;
 }
 
+div.main div.content .add-task-container .input-container div.date-project {
+    display: flex;
+    column-gap: 16px;
+}
+
+div.main div.content .add-task-container .input-container div.due-date {
+    display: flex;
+    column-gap: 4px;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: bold;
+}
+
+div.main div.content .add-task-container .input-container div.project {
+    display: flex;
+    column-gap: 4px;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: bold;
+}
+
 
 div.main footer {
     flex: 1;
