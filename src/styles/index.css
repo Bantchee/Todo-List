@@ -11,6 +11,8 @@
     --orange-light: #FAE7CC;
     --red: #FF0000;
     --red-light: #FCCECE;
+    --green: #33C500;
+    --light-green: #D7FFC9;
     --github-img-size: 32px;
 }
 
@@ -152,12 +154,17 @@ div.main div.content .add-task-container .input-container {
     border-left: var(--blue) solid 4px;
 }
 
+div.main div.content .add-task-container .input-container p {
+    margin: 0px;
+    font-weight: bold;
+}
+
 div.main div.content .add-task-container .input-container input.title {
     border-radius: 8px;
     padding-left: 4px;
 }
 
-div.main div.content .add-task-container .input-container textarea{
+div.main div.content .add-task-container .input-container textarea {
     height: 150px;
     border-radius: 8px;
     padding-left: 4px;
@@ -186,6 +193,114 @@ div.main div.content .add-task-container .input-container div.project {
     font-weight: bold;
 }
 
+div.main div.content .add-task-container .input-container .priority-add-cancel {
+    display: flex;
+    row-gap: 4px;
+    column-gap: 24px;
+    align-items: center;
+}
+
+div.main div.content .add-task-container .input-container .priorities {
+    display: flex;
+    column-gap: 4px;
+    align-items: center;
+}
+
+div.main div.content .add-task-container .input-container .priorities .priority {
+    width: 100px;
+    border-radius: 4px;
+    padding: 4px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.main div.content .add-task-container .input-container .priorities .low {
+    background-color: var(--blue-light);
+    color: var(--blue);
+    border-left: var(--blue) solid 4px;
+    border-right: var(--blue) solid 4px;
+}
+
+div.main div.content .add-task-container .input-container .priorities .low:hover {
+    cursor: pointer;
+    background-color: var(--blue);
+    color: var(--blue-light);
+}
+
+div.main div.content .add-task-container .input-container .priorities .medium {
+    background-color: var(--orange-light);
+    color: var(--orange);
+    border-left: var(--orange) solid 4px;
+    border-right: var(--orange) solid 4px;
+}
+
+div.main div.content .add-task-container .input-container .priorities .medium:hover {
+    cursor: pointer;
+    background-color: var(--orange);
+    color: var(--orange-light);
+}
+
+div.main div.content .add-task-container .input-container .priorities .high {
+    background-color: var(--red-light);
+    color: var(--red);
+    border-left: var(--red) solid 4px;
+    border-right: var(--red) solid 4px;
+}
+
+div.main div.content .add-task-container .input-container .priorities .high:hover {
+    cursor: pointer;
+    background-color: var(--red);
+    color: var(--red-light);
+}
+
+div.main div.content .add-task-container .input-container .add-cancel {
+    display: flex;
+    justify-self: right;
+    column-gap: 4px;
+    margin-left: auto;
+}
+
+div.main div.content .add-task-container .input-container .add {
+    width: 100px;
+    border-radius: 4px;
+    padding: 4px 0px;
+
+    background-color: var(--light-green);
+    color: var(--green);
+    border-left: var(--green) solid 4px;
+    border-right: var(--green) solid 4px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.main div.content .add-task-container .input-container .add:hover {
+    cursor: pointer;
+    background-color: var(--green);
+    color: var(--light-green);
+}
+
+div.main div.content .add-task-container .input-container .cancel {
+    width: 100px;
+    border-radius: 4px;
+    padding: 4px 0px;
+    background-color: var(--red-light);
+    color: var(--red);
+    border-left: var(--red) solid 4px;
+    border-right: var(--red) solid 4px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.main div.content .add-task-container .input-container .cancel:hover {
+    cursor: pointer;
+    background-color: var(--red);
+    color: var(--red-light);
+}
 
 div.main footer {
     flex: 1;

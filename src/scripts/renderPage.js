@@ -364,19 +364,24 @@ export const page = () => {
             // Div : Priority-Add-Cancel
             const priorityAddCancelDiv = createElement('div', container, 'priority-add-cancel');
                 // Div : Priority
-                const priorityDiv = createElement('div', priorityAddCancelDiv, 'priority');
+                const priorityDiv = createElement('div', priorityAddCancelDiv, 'priorities');
+                    // Div : Priority Text container
+                    const priorityParaDiv = createElement('div', priorityDiv, 'text-div');
+                        // P : Priortity:
+                        const priorityPara = createElement('p', priorityParaDiv);
+                        priorityPara.textContent = "Priority: "
                     // Div : Low
-                    const lowPriorityDiv = createElement('div', priorityDiv, 'low');
+                    const lowPriorityDiv = createElement('div', priorityDiv, ['low', 'priority']);
                         // P : Low
                         const lowPara = createElement('p', lowPriorityDiv);
                         lowPara.textContent = 'Low';
                     // Div : Medium
-                    const mediumPriorityDiv = createElement('div', priorityDiv, 'medium');
+                    const mediumPriorityDiv = createElement('div', priorityDiv, ['medium', 'priority']);
                         // P : Medium
                         const mediumPara = createElement('p', mediumPriorityDiv);
                         mediumPara.textContent = 'Medium';
                     // Div : High
-                    const highPriorityDiv = createElement('div', priorityDiv, 'high');
+                    const highPriorityDiv = createElement('div', priorityDiv, ['high', 'priority']);
                         // P : High
                         const highPara = createElement('p', highPriorityDiv);
                         highPara.textContent = 'High';
