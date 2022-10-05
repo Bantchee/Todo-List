@@ -359,8 +359,7 @@ export const page = () => {
                     // Selector : directory list of createdprojects
                     const projectSelector = createElement('select', projectDiv);
                         // Temp
-                        const option = createElement('option', projectSelector);
-                        option.textContent = 'Work';
+                        renderProjectOptions(projectSelector);
             // Div : Priority-Add-Cancel
             const priorityAddCancelDiv = createElement('div', container, 'priority-add-cancel');
                 // Div : Priority
@@ -398,6 +397,18 @@ export const page = () => {
                         const cancelPara = createElement('p', cancelDiv);
                         cancelPara.textContent = "Cancel";
     };
+
+    //
+    const renderProjectOptions = (selector) => {
+        // Inbox
+        const inboxOption = createElement('option', selector);
+        inboxOption.textContent = 'Inbox';
+        for(let i = 0; i < directory.createdProjects.length; i++) {
+            const name = directory.createdProjects[i].name;
+            const option = createElement('option', selector);
+            option.textContent = name.slice(0,1).toUpperCase() + name.slice(1).toLowerCase();
+        }
+    }
 
     // Render Element of Footer
     const renderFooter = () => {
