@@ -143,21 +143,43 @@ export const page = () => {
     }
 
     const updateAddTaskInput = () => {
-        // Add Task Container
         const addTaskContainer = state.content.querySelector('div.add-task-container');
-        console.log(addTaskContainer);
-        // Add Task Btn
         const addTaskBtn = state.content.querySelector('div.add-task-btn');
-        console.log(addTaskBtn);
-        // Add Task Input Container
         const addTaskInputContainer = state.content.querySelector('div.add-task-container div.input-container');
-        console.log(addTaskInputContainer);
+        
         // Priority btns
         const priorityBtns = addTaskInputContainer.querySelectorAll('.priority');
-        console.log(priorityBtns);
+        
+        priorityBtns.forEach((priority, index) => {
+            priority.addEventListener('click', () => {
+                // if priority is low, set background to blue
+                if(priority.classList.contains('low')) {
+                    priority.classList.add('active-low');
+                    // others
+                    priorityBtns[1].classList.remove('active-medium');
+                    priorityBtns[2].classList.remove('active-high');
+                }
+                // if priority is medium, set background to orange
+                else if(priority.classList.contains('medium')) {
+                    priority.classList.add('active-medium');
+                    // others
+                    priorityBtns[0].classList.remove('active-low');
+                    priorityBtns[2].classList.remove('active-high');
+                }
+                // if priority is low, set background to red
+                else if(priority.classList.contains('high')) {
+                    priority.classList.add('active-high');
+                    // others
+                    priorityBtns[0].classList.remove('active-low');
+                    priorityBtns[1].classList.remove('active-medium');
+                }
+            });
+        });
+
         // Add btn
         const addBtn = addTaskInputContainer.querySelector('.add');
         console.log(addBtn);
+
         // Cancel btn
         const cancelBtn = addTaskInputContainer.querySelector('.cancel');
         console.log(cancelBtn);

@@ -228,6 +228,11 @@ div.main div.content .add-task-container .input-container .priorities .low:hover
     color: var(--blue-light);
 }
 
+div.main div.content .add-task-container .input-container .priorities .active-low {
+    background-color: var(--blue);
+    color: var(--blue-light);
+}
+
 div.main div.content .add-task-container .input-container .priorities .medium {
     background-color: var(--orange-light);
     color: var(--orange);
@@ -241,6 +246,11 @@ div.main div.content .add-task-container .input-container .priorities .medium:ho
     color: var(--orange-light);
 }
 
+div.main div.content .add-task-container .input-container .priorities .active-medium {
+    background-color: var(--orange);
+    color: var(--orange-light);
+}
+
 div.main div.content .add-task-container .input-container .priorities .high {
     background-color: var(--red-light);
     color: var(--red);
@@ -250,6 +260,11 @@ div.main div.content .add-task-container .input-container .priorities .high {
 
 div.main div.content .add-task-container .input-container .priorities .high:hover {
     cursor: pointer;
+    background-color: var(--red);
+    color: var(--red-light);
+}
+
+div.main div.content .add-task-container .input-container .priorities .active-high {
     background-color: var(--red);
     color: var(--red-light);
 }
