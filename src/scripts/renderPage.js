@@ -54,7 +54,6 @@ export const page = () => {
         const addTaskBtn = state.content.querySelector('.add-task-btn');
 
         addTaskBtn.addEventListener('click', () => {
-            console.log('hello');
             // If div.add-project has active class
             if(addTaskBtn.classList.contains('active')) {
                 // delete inputAddProject
@@ -65,6 +64,7 @@ export const page = () => {
             else {
                 // render input
                 renderAddTaskInput(state.content.querySelector('.add-task-container'));
+                updateAddTaskInput();
                 // add active class
                 addTaskBtn.classList.add('active');
             }    
@@ -139,6 +139,34 @@ export const page = () => {
                 });
             }  
                 
+        });
+    }
+
+    const updateAddTaskInput = () => {
+        // Add Task Container
+        const addTaskContainer = state.content.querySelector('div.add-task-container');
+        console.log(addTaskContainer);
+        // Add Task Btn
+        const addTaskBtn = state.content.querySelector('div.add-task-btn');
+        console.log(addTaskBtn);
+        // Add Task Input Container
+        const addTaskInputContainer = state.content.querySelector('div.add-task-container div.input-container');
+        console.log(addTaskInputContainer);
+        // Priority btns
+        const priorityBtns = addTaskInputContainer.querySelectorAll('.priority');
+        console.log(priorityBtns);
+        // Add btn
+        const addBtn = addTaskInputContainer.querySelector('.add');
+        console.log(addBtn);
+        // Cancel btn
+        const cancelBtn = addTaskInputContainer.querySelector('.cancel');
+        console.log(cancelBtn);
+
+        cancelBtn.addEventListener('click', () => {
+            // delete inputAddProject
+            addTaskContainer.removeChild(addTaskInputContainer);
+            // remove active class
+            addTaskBtn.classList.remove('active'); 
         });
     }
 
