@@ -8,6 +8,7 @@ import upcomingSvg from '../icons/calendar.svg';
 import cirlcePlusSvg from '../icons/circlePlus.svg';
 import deleteSvg from '../icons/trash.svg';
 import editSvg from '../icons/edit.svg';
+import {task} from './task';
 
 export const page = () => {
     const state = {
@@ -30,6 +31,7 @@ export const page = () => {
         update();
     };
 
+    // adds the current-project class to current rendered project
     const setCurrentProject = () => {
         const projects = state.sideBar.querySelectorAll('button.project');
         for(let i = 0; i < projects.length; i++) {
@@ -178,11 +180,44 @@ export const page = () => {
 
         // Add btn
         const addBtn = addTaskInputContainer.querySelector('.add');
-        console.log(addBtn);
+        addBtn.addEventListener('click', () => {
+            // Add Task Input Container
+            // Get Title value 
+            let titleValue = addTaskInputContainer.querySelector('.title').value;
+            // Get Details Value
+            let detailsValue = addTaskInputContainer.querySelector('textarea').value;
+            // Get Priority
+            let priorityValue;
+            priorityBtns.forEach((priority,) => {
+                if(priority.classList.contains('active-low')) {
+                    priorityValue = 'low';
+                }
+                else if(priority.classList.contains('active-medium')) {
+                    priorityValue = 'medium';
+                } 
+                else if(priority.classList.contains('active-high')) {
+                    priorityValue = 'high';
+                }
+            });
+            // Get Due Date Value
+            let dueDateValue = addTaskInputContainer.querySelector('div.due-date input').value;
+            // Get Project
+            let projectValue = addTaskInputContainer.querySelector('div.project select').value;
+
+            // create Task
+            const newTask = task(titleValue, detailsValue, priorityValue, dueDateValue, projectValue.slice(0,1).toLowerCase() + projectValue.slice(1));
+            
+            // Get project from directory
+            const project = directory.getProject(projectValue.slice(0,1).toLowerCase() + projectValue.slice(1));
+
+            // add task to project
+            project.addTask(newTask);
+
+            render();
+        });
 
         // Cancel btn
         const cancelBtn = addTaskInputContainer.querySelector('.cancel');
-        console.log(cancelBtn);
 
         cancelBtn.addEventListener('click', () => {
             // delete inputAddProject
@@ -420,7 +455,7 @@ export const page = () => {
                         const priorityPara = createElement('p', priorityParaDiv);
                         priorityPara.textContent = "Priority: "
                     // Div : Low
-                    const lowPriorityDiv = createElement('div', priorityDiv, ['low', 'priority']);
+                    const lowPriorityDiv = createElement('div', priorityDiv, ['low', 'priority', 'active-low']);
                         // P : Low
                         const lowPara = createElement('p', lowPriorityDiv);
                         lowPara.textContent = 'Low';

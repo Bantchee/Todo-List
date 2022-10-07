@@ -25,11 +25,6 @@ export const project = (name) => {
         }
     };
 
-    // Create Task
-    const createTask = (title, details, priority, dueDate, project) => {
-        task(title, details, priority, dueDate, project);
-    }
-
     // Add Task
     const addTask = (task) => {
         get('tasks').push(task);
@@ -49,7 +44,6 @@ export const project = (name) => {
 
     return Object.assign(
         state,
-        {createTask},
         {addTask},
         {deleteTask}
     );

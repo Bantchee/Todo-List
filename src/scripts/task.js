@@ -4,13 +4,13 @@
     // 3. String > "High"
 
 // In > Out : String String Priority Date Project > Object
-export const task = (title, details, priority, dueDate, project) => {
+export const task = (title, details, priority, dueDate, projectName) => {
     const state = {
         title,
         details,
         priority,
         dueDate,
-        project,
+        projectName,
         id: null,
     }
 

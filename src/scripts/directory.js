@@ -27,8 +27,26 @@ export const directory = (() => {
         return newProject;
     };
 
+    const getProject = (name) => {
+        if(name === 'inbox') {
+            return state.defaultProjects[0];
+        }
+        else {
+            for(let i = 0; i < state.createdProjects.length; i++) {
+                if(name === state.createdProjects[i].name) {
+                    return state.createdProjects[i];
+                }
+            }
+        }
+        // else 
+            // loop through createProjects
+                // if project.name == name
+                    // return project
+    };
+
     return Object.assign(
         state,
-        {createProject}
+        {createProject},
+        {getProject}
     );
 })();
