@@ -45,6 +45,7 @@ export const project = (name) => {
     return Object.assign(
         state,
         {addTask},
-        {deleteTask}
+        {deleteTask},
+        {getTask},
     );
 };

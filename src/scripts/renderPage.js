@@ -206,7 +206,7 @@ export const page = () => {
 
             // create Task
             const newTask = task(titleValue, detailsValue, priorityValue, dueDateValue, projectValue.slice(0,1).toLowerCase() + projectValue.slice(1));
-            
+
             // Get project from directory
             const project = directory.getProject(projectValue.slice(0,1).toLowerCase() + projectValue.slice(1));
 
@@ -388,18 +388,33 @@ export const page = () => {
     };
 
     const renderTasks = (content) => {
-        console.log(directory.currentProject.name);
+        const project = directory.currentProject;
+
         // Div Task Container
         const taskContainer = createElement('div', content, 'task-container');
         // // List of Tasks
-        for(let i = 0; i < directory.currentProject.tasks.length; i++) {
+        for(let i = 0; i < project.tasks.length; i++) {
             console.log(directory.currentProject.name);
-            // renderTask(project.tasks[i]);
+            renderTask(project.tasks[i], taskContainer);
         }
     }
 
-    const renderTask = (t) => {
-        const task = createElement('div', state.content, 'content');
+    const renderTask = (taskObject, taskContainer) => {
+        // Div : Task Container
+        const taskDiv = createElement('div', taskContainer, 'task');
+            // Div : Left Side
+            const leftDiv = createElement('div', taskDiv, 'left-side');
+                // Input : Checkbox
+                // Para : Title
+                const para = createElement('p', leftDiv, 'title');
+                para.textContent = taskObject.title;
+            // Div : Right Side
+                // Details
+                // Due Date
+                // Edit Btn
+                // Delete Btn
+
+
 
         return task;
     };
