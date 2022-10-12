@@ -36,10 +36,8 @@ export const project = (name) => {
     }
 
     // Delete Task
-    const deleteTask = (task) => {
-        tasks.filter(x => {
-            x.id === task.id; 
-        });
+    const deleteTask = (index) => {
+        state.tasks.splice(index, 1);
     }
 
     return Object.assign(

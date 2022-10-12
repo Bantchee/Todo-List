@@ -167,11 +167,20 @@ export const page = () => {
                         detailsPara.textContent = directory.currentProject.tasks[index].details;
                 }
             });
+
+            // Bind functionality to edit buttons
+        
+            // Bind functionality to delete buttons
+            const deleteBtn = task.querySelector('.delete');
+            deleteBtn.addEventListener('click', () => {
+                console.log(directory.currentProject.tasks);
+                directory.currentProject.deleteTask(index);
+                console.log(directory.currentProject.tasks);
+                render();
+            });
         });
 
-        // Bind functionality to edit buttons
 
-        // Bind functionality to delete buttons
     };
 
     const updateAddTaskInput = () => {
