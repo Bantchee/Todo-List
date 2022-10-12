@@ -133,11 +133,16 @@ div.main div.content div.task-container {
 
 div.main div.content div.task {
     display: flex;
+    flex-direction: column;
 
     background-color: var(--light-grey);
     border-radius: 4px;
 
     padding: 8px;
+}
+
+div.main div.content div.task-content {
+    display: flex;
 }
 
 div.main div.content div.low-task {
@@ -156,6 +161,8 @@ div.main div.content div.high-task {
 }
 
 div.main div.content div.left-side {
+    grid-area: left;
+
     display: flex;
     align-items: center;
     column-gap: 4px;
@@ -166,10 +173,16 @@ div.main div.content div.left-side input {
 }
 
 div.main div.content div.right-side {
+    grid-area: right;
+
     display: flex;
     margin-left: auto;
     align-items: center;
     column-gap: 4px;
+}
+
+div.main div.content div.details-container {
+    margin: auto;
 }
 
 div.main div.content .add-task-container {

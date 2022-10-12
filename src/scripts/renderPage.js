@@ -55,6 +55,8 @@ export const page = () => {
         const addTaskContainer = state.content.querySelector('.add-task-container');
         const addTaskBtn = state.content.querySelector('.add-task-btn');
 
+        updateTask();
+
         addTaskBtn.addEventListener('click', () => {
             // If div.add-project has active class
             if(addTaskBtn.classList.contains('active')) {
@@ -143,6 +145,34 @@ export const page = () => {
                 
         });
     }
+
+    const updateTask = () => {
+        const tasks = state.content.querySelectorAll('.task');
+
+        // Bind functionality to tasks
+        tasks.forEach((task, index) => {
+            // Bind functionality to details buttons
+            const detailsBtn = task.querySelector('.details');
+            detailsBtn.addEventListener('click', () => {
+                let detailsContainer = task.querySelector('.details-container');
+
+                if(detailsContainer) {
+                    task.removeChild(detailsContainer);
+                }
+                else {
+                    // Div : Details Container
+                    detailsContainer = createElement('div', task, 'details-container');
+                        // P : Details
+                        const detailsPara = createElement('p', detailsContainer);
+                        detailsPara.textContent = directory.currentProject.tasks[index].details;
+                }
+            });
+        });
+
+        // Bind functionality to edit buttons
+
+        // Bind functionality to delete buttons
+    };
 
     const updateAddTaskInput = () => {
         const addTaskContainer = state.content.querySelector('div.add-task-container');
@@ -394,43 +424,44 @@ export const page = () => {
         const taskContainer = createElement('div', content, 'task-container');
         // // List of Tasks
         for(let i = 0; i < project.tasks.length; i++) {
-            console.log(directory.currentProject.name);
             renderTask(project.tasks[i], taskContainer);
         }
     }
 
     const renderTask = (taskObject, taskContainer) => {
-        // Div : Task Container
+        // Div : Tasks
         const taskDiv = createElement('div', taskContainer, 'task');
         taskDiv.classList.add(taskObject.priority + '-task');
-            // Div : Left Side
-            const leftDiv = createElement('div', taskDiv, 'left-side');
-                // Input : Checkbox
-                const checkBox = createElement('input', leftDiv, 'checkbox');
-                checkBox.setAttribute('type', 'checkbox');
-                // Para : Title
-                const para = createElement('p', leftDiv, 'title');
-                para.textContent = taskObject.title;
-            // Div : Right Side
-            const rightDiv = createElement('div', taskDiv, 'right-side');
-                // Btn : Details
-                const detailsBtn = createElement('button', rightDiv, 'details');
-                    // Para
-                    const detailsPara = createElement('p', detailsBtn);
-                    detailsPara.textContent = "Details";
-                // Para : Due Date
-                const dueDatePara = createElement('p', rightDiv, 'due-date');
-                dueDatePara.textContent = taskObject.dueDate;
-                // Btn : Edit Btn
-                const editBtn = createElement('button', rightDiv, 'edit');
-                    // Img : Edit
-                    const editImg = createElement('img', editBtn);
-                    editImg.setAttribute('src', editSvg);
-                // Btn : Delete Btn
-                const deleteBtn = createElement('button', rightDiv, 'delete');
-                    // Img : Delete
-                    const deleteImg = createElement('img', deleteBtn);
-                    deleteImg.setAttribute('src', deleteSvg);
+            // Div : Content
+            const content = createElement('div', taskDiv, 'task-content');
+                // Div : Left Side
+                const leftDiv = createElement('div', content, 'left-side');
+                    // Input : Checkbox
+                    const checkBox = createElement('input', leftDiv, 'checkbox');
+                    checkBox.setAttribute('type', 'checkbox');
+                    // Para : Title
+                    const para = createElement('p', leftDiv, 'title');
+                    para.textContent = taskObject.title;
+                // Div : Right Side
+                const rightDiv = createElement('div', content, 'right-side');
+                    // Btn : Details
+                    const detailsBtn = createElement('button', rightDiv, 'details');
+                        // Para
+                        const detailsPara = createElement('p', detailsBtn);
+                        detailsPara.textContent = "Details";
+                    // Para : Due Date
+                    const dueDatePara = createElement('p', rightDiv, 'due-date');
+                    dueDatePara.textContent = taskObject.dueDate;
+                    // Btn : Edit Btn
+                    const editBtn = createElement('button', rightDiv, 'edit');
+                        // Img : Edit
+                        const editImg = createElement('img', editBtn);
+                        editImg.setAttribute('src', editSvg);
+                    // Btn : Delete Btn
+                    const deleteBtn = createElement('button', rightDiv, 'delete');
+                        // Img : Delete
+                        const deleteImg = createElement('img', deleteBtn);
+                        deleteImg.setAttribute('src', deleteSvg);
 
         return task;
     };
