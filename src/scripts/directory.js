@@ -23,7 +23,7 @@ export const directory = (() => {
     state.currentProject = state.defaultProjects[0];
 
     // Temp
-    const lowTask = task("Low Task Title", "Cool Stuff to do", "Low", '10-17-2022', 'temp1');
+    const lowTask = task("Low Task Title", "Cool Stuff to do", "low", '10-17-2022', 'temp1');
     const mediuemTask = task("Medium Task Title", "Cool Stuff to do", "medium", '10-17-2022', 'temp1');
     const highTask = task("High Task Title", "Cool Stuff to do", "high", '10-17-2022', 'temp1');
     state.createdProjects[0].addTask(lowTask);

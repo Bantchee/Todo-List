@@ -16,6 +16,10 @@
     --github-img-size: 32px;
 }
 
+:root p {
+    margin: 0px;
+}
+
 body {
     display: flex;
     margin: 0px;
@@ -117,6 +121,55 @@ div.main div.content {
     flex: 4;
     padding: 16px 64px;
     background-color: var(--white);
+}
+
+/* Task Styling */
+
+div.main div.content div.task-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px; 
+}
+
+div.main div.content div.task {
+    display: flex;
+
+    background-color: var(--light-grey);
+    border-radius: 4px;
+
+    padding: 8px;
+}
+
+div.main div.content div.low-task {
+    border-right: var(--blue) solid 4px;
+    border-left: var(--blue) solid 4px;
+}
+
+div.main div.content div.medium-task {
+    border-right: var(--orange) solid 4px;
+    border-left: var(--orange) solid 4px;
+}
+
+div.main div.content div.high-task {
+    border-right: var(--red) solid 4px;
+    border-left: var(--red) solid 4px;
+}
+
+div.main div.content div.left-side {
+    display: flex;
+    align-items: center;
+    column-gap: 4px;
+}
+
+div.main div.content div.left-side input {
+    margin: 0px;
+}
+
+div.main div.content div.right-side {
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+    column-gap: 4px;
 }
 
 div.main div.content .add-task-container {

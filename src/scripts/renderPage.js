@@ -402,19 +402,35 @@ export const page = () => {
     const renderTask = (taskObject, taskContainer) => {
         // Div : Task Container
         const taskDiv = createElement('div', taskContainer, 'task');
+        taskDiv.classList.add(taskObject.priority + '-task');
             // Div : Left Side
             const leftDiv = createElement('div', taskDiv, 'left-side');
                 // Input : Checkbox
+                const checkBox = createElement('input', leftDiv, 'checkbox');
+                checkBox.setAttribute('type', 'checkbox');
                 // Para : Title
                 const para = createElement('p', leftDiv, 'title');
                 para.textContent = taskObject.title;
             // Div : Right Side
-                // Details
-                // Due Date
-                // Edit Btn
-                // Delete Btn
-
-
+            const rightDiv = createElement('div', taskDiv, 'right-side');
+                // Btn : Details
+                const detailsBtn = createElement('button', rightDiv, 'details');
+                    // Para
+                    const detailsPara = createElement('p', detailsBtn);
+                    detailsPara.textContent = "Details";
+                // Para : Due Date
+                const dueDatePara = createElement('p', rightDiv, 'due-date');
+                dueDatePara.textContent = taskObject.dueDate;
+                // Btn : Edit Btn
+                const editBtn = createElement('button', rightDiv, 'edit');
+                    // Img : Edit
+                    const editImg = createElement('img', editBtn);
+                    editImg.setAttribute('src', editSvg);
+                // Btn : Delete Btn
+                const deleteBtn = createElement('button', rightDiv, 'delete');
+                    // Img : Delete
+                    const deleteImg = createElement('img', deleteBtn);
+                    deleteImg.setAttribute('src', deleteSvg);
 
         return task;
     };
@@ -500,9 +516,6 @@ export const page = () => {
 
     //
     const renderProjectOptions = (selector) => {
-        // Inbox
-        const inboxOption = createElement('option', selector);
-        inboxOption.textContent = 'Inbox';
         for(let i = 0; i < directory.createdProjects.length; i++) {
             const name = directory.createdProjects[i].name;
             const option = createElement('option', selector);
