@@ -51,10 +51,30 @@ export const directory = (() => {
         state.createdProjects = state.createdProjects.filter(project => project.name !== name);
     }
 
+    const updateIndexTasks = () => {
+        state.defaultProjects[0].tasks = [];
+        state.createdProjects.forEach((project) => {
+            state.defaultProjects[0].tasks = state.defaultProjects[0].tasks.concat(project.tasks);
+        });
+        state.defaultProjects[0].sortTasks();
+    };
+
+    const updateTodayTasks = () => {
+
+    };
+
+    // task scheduled for the next 7 days
+    const updateUpcomingTasks = () => {
+
+    };
+
     return Object.assign(
         state,
         {createProject},
         {getProject},
         {deleteProject},
+        {updateIndexTasks},
+        {updateTodayTasks},
+        {updateUpcomingTasks},
     );
 })();

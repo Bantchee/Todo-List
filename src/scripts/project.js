@@ -1,4 +1,5 @@
 import { task } from "./task";
+import { compareAsc } from "date-fns";
 
 // In > Out : String List-of-Tasks > Object
 export const project = (name) => {
@@ -40,10 +41,16 @@ export const project = (name) => {
         state.tasks.splice(index, 1);
     }
 
+    // Sort tasks
+    const sortTasks = () => {
+        state.tasks.sort((a, b) => compareAsc(a.dueDate, b.dueDate));
+    }
+
     return Object.assign(
         state,
         {addTask},
         {deleteTask},
         {getTask},
+        {sortTasks},
     );
 };

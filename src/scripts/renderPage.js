@@ -55,6 +55,10 @@ export const page = () => {
         const addTaskContainer = state.content.querySelector('.add-task-container');
         const addTaskBtn = state.content.querySelector('.add-task-btn');
 
+        directory.updateIndexTasks();
+        directory.updateTodayTasks();
+        directory.updateUpcomingTasks();
+
         updateTask();
         updateProject();
 
@@ -263,7 +267,7 @@ export const page = () => {
             let dueDateValue = addTaskInputContainer.querySelector('div.due-date input').value;
             // Get Project
             let projectValue = addTaskInputContainer.querySelector('div.project select').value;
-
+            
             // create Task
             const newTask = task(titleValue, detailsValue, priorityValue, dueDateValue, projectValue.slice(0,1).toLowerCase() + projectValue.slice(1));
 
@@ -441,6 +445,7 @@ export const page = () => {
 
     const renderTasks = (content) => {
         const project = directory.currentProject;
+        project.sortTasks();
 
         // Div Task Container
         const taskContainer = createElement('div', content, 'task-container');
@@ -473,7 +478,8 @@ export const page = () => {
                         detailsPara.textContent = "Details";
                     // Para : Due Date
                     const dueDatePara = createElement('p', rightDiv, 'due-date');
-                    dueDatePara.textContent = taskObject.dueDate;
+                    dueDatePara.textContent = taskObject.returnFormatedDueDate();
+            
                     // Btn : Edit Btn
                     const editBtn = createElement('button', rightDiv, 'edit');
                         // Img : Edit
