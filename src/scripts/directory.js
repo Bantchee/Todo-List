@@ -38,7 +38,7 @@ export const directory = (() => {
     };
 
     const getProject = (name) => {
-        const projectArr = state.defualtProjects.concat(state.createdProjects)
+        const projectArr = state.defaultProjects.concat(state.createdProjects)
 
         for(let i = 0; i < projectArr.length; i++) {
             if(name === projectArr[i].name) {
