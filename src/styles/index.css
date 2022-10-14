@@ -48,7 +48,12 @@ aside .home-container, aside .project-container {
     flex-direction: column;
 }
 
-aside button {
+/* Align Edit and Delete Buttons to the right side */
+aside button.project {
+    margin-right: auto;
+}
+
+aside button.project, button.title {
     display: flex;
     align-items: center;
 
@@ -59,9 +64,24 @@ aside button {
     font-size: 1.25em;
 }
 
-aside button:hover {
+aside button.project:hover, button.title:hover {
     font-weight: bold;
     /* background-color: var(--light-grey); */
+}
+
+aside div.add-project button {
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.25em;
+}
+
+aside div.add-project button:hover {
+    font-weight: bold;
 }
 
 aside button.title {

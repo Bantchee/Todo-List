@@ -338,13 +338,6 @@ export const page = () => {
                             text.textContent = projectName.slice(0,1).toUpperCase() + projectName.slice(1);
                     }
             // Div Projects
-                // Divs : List-of-Projects
-                // Div : Add Project
-                    // Input
-                    // Div
-                        // Btn : Add
-                        // Btn : Cancel
-            // Div Projects
             const projectsContainer = createElement('div', sideBar, 'project-container');
                 // Btn : ^ project
                 const projectBtn = createElement('button', projectsContainer, 'title');
@@ -364,7 +357,6 @@ export const page = () => {
                         const divProject = createElement('div', createdProjects, 'project-div')
                             // Btn : Project
                             const projectBtn = createElement('button', divProject, ["project", projectName]);
-                                //Img
                                 // Para
                                 const projText = createElement('p', projectBtn);
                                 projText.textContent = projectName.slice(0,1).toUpperCase() + projectName.slice(1);
