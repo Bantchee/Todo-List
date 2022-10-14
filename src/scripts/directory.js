@@ -38,25 +38,23 @@ export const directory = (() => {
     };
 
     const getProject = (name) => {
-        if(name === 'inbox') {
-            return state.defaultProjects[0];
-        }
-        else {
-            for(let i = 0; i < state.createdProjects.length; i++) {
-                if(name === state.createdProjects[i].name) {
-                    return state.createdProjects[i];
-                }
+        const projectArr = state.defualtProjects.concat(state.createdProjects)
+
+        for(let i = 0; i < projectArr.length; i++) {
+            if(name === projectArr[i].name) {
+                return projectArr[i];
             }
         }
-        // else 
-            // loop through createProjects
-                // if project.name == name
-                    // return project
     };
+
+    const deleteProject = (name) => {
+        state.createdProjects = state.createdProjects.filter(project => project.name !== name);
+    }
 
     return Object.assign(
         state,
         {createProject},
-        {getProject}
+        {getProject},
+        {deleteProject},
     );
 })();

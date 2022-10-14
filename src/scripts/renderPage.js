@@ -56,6 +56,7 @@ export const page = () => {
         const addTaskBtn = state.content.querySelector('.add-task-btn');
 
         updateTask();
+        updateProject();
 
         addTaskBtn.addEventListener('click', () => {
             // If div.add-project has active class
@@ -179,9 +180,29 @@ export const page = () => {
                 render();
             });
         });
-
-
     };
+
+    const updateProject = () => {
+        // created projects container
+        const projectsContainer = state.sideBar.querySelector('.created-projects');
+        // Get Projects
+        const projects = state.sideBar.querySelectorAll('.project-div');
+        projects.forEach((project, index) => {
+            // Project Btn
+            // Edit Btn
+            // Delete Btn
+            const deleteBtn = project.querySelector('.delete');
+
+            // Delete Bindings
+            deleteBtn.addEventListener('click', () => {
+                directory.deleteProject(project.textContent.toLowerCase());
+                render();
+            });
+        });
+            // Bind Delete Buttons
+
+            // Bind Edit Buttons
+    }
 
     const updateAddTaskInput = () => {
         const addTaskContainer = state.content.querySelector('div.add-task-container');
