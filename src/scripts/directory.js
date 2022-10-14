@@ -1,3 +1,4 @@
+import { getDate, getMonth, getYear, isAfter, isEqual } from 'date-fns';
 import {project} from './project';
 // Temp
 import {task} from './task';
@@ -52,7 +53,9 @@ export const directory = (() => {
     }
 
     const updateIndexTasks = () => {
+        // reset index task list
         state.defaultProjects[0].tasks = [];
+
         state.createdProjects.forEach((project) => {
             state.defaultProjects[0].tasks = state.defaultProjects[0].tasks.concat(project.tasks);
         });
@@ -60,12 +63,44 @@ export const directory = (() => {
     };
 
     const updateTodayTasks = () => {
+        // reset today task list
+        state.defaultProjects[1].tasks = [];
 
+        const currentDate = new Date();
+
+        state.defaultProjects[0].tasks.forEach((task) => {
+            console.log('in for');
+            console.log(getDate(currentDate) === getDate(task.dueDate));
+            if(getYear(currentDate) === getYear(task.dueDate)) {
+                if (getMonth(currentDate) === getMonth(task.dueDate)) {
+                    console.log(getMonth(currentDate), );
+                    if(getDate(currentDate) === getDate(task.dueDate)) {
+                        state.defaultProjects[1].tasks.push(task);
+                    }
+                }
+            }
+        });
+        state.defaultProjects[1].sortTasks();
+
+        console.log(directory.defaultProjects[1]);
     };
 
     // task scheduled for the next 7 days
     const updateUpcomingTasks = () => {
+        // reset today task list
+        state.defaultProjects[2].tasks = [];
 
+        const pastDate = new Date();
+        pastDate.setDate = pastDate.getDate - 1;
+        const futureDate = new Date();
+        futureDate.setDate = futureDate.getDate + 7;
+
+        state.defaultProjects[0].tasks.forEach((project) => {
+            if(isAfter(project.dueDate, pastDate) && isBefore(project.dueDate, futureDate) ) {
+                state.defaultProjects[2].tasks = state.defaultProjects[2].tasks.concat(project.tasks);
+            }
+        });
+        state.defaultProjects[2].sortTasks();
     };
 
     return Object.assign(

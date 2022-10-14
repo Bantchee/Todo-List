@@ -21,7 +21,6 @@ export const task = (title, details, priority, dueDate, projectName) => {
     // CRUD : Create, Read, Update, Delete
 
     const returnFormatedDueDate = () => {
-        console.log(state.dueDate);
         return format(state.dueDate, 'MM/dd/yyyy');
     }
 
