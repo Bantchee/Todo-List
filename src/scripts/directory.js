@@ -23,14 +23,6 @@ export const directory = (() => {
 
     state.currentProject = state.defaultProjects[0];
 
-    // Temp
-    const lowTask = task("Low Task Title", "Cool Stuff to do", "low", '10-17-2022', 'temp1');
-    const mediuemTask = task("Medium Task Title", "Cool Stuff to do", "medium", '10-17-2022', 'temp1');
-    const highTask = task("High Task Title", "Cool Stuff to do", "high", '10-17-2022', 'temp1');
-    state.createdProjects[0].addTask(lowTask);
-    state.createdProjects[0].addTask(mediuemTask);
-    state.createdProjects[0].addTask(highTask);
-
     const createProject = (name) => {
         const lowName = name.toLowerCase();
         const newProject = project(lowName);
@@ -67,22 +59,17 @@ export const directory = (() => {
         state.defaultProjects[1].tasks = [];
 
         const currentDate = new Date();
-
         state.defaultProjects[0].tasks.forEach((task) => {
-            console.log('in for');
-            console.log(getDate(currentDate) === getDate(task.dueDate));
             if(getYear(currentDate) === getYear(task.dueDate)) {
                 if (getMonth(currentDate) === getMonth(task.dueDate)) {
-                    console.log(getMonth(currentDate), );
                     if(getDate(currentDate) === getDate(task.dueDate)) {
                         state.defaultProjects[1].tasks.push(task);
+                        
                     }
                 }
             }
         });
         state.defaultProjects[1].sortTasks();
-
-        console.log(directory.defaultProjects[1]);
     };
 
     // task scheduled for the next 7 days
@@ -91,15 +78,22 @@ export const directory = (() => {
         state.defaultProjects[2].tasks = [];
 
         const pastDate = new Date();
-        pastDate.setDate = pastDate.getDate - 1;
+        pastDate.setDate(getDate(pastDate) - 1);
         const futureDate = new Date();
-        futureDate.setDate = futureDate.getDate + 7;
+        futureDate.setDate(getDate(futureDate) + 7);
+        console.log(pastDate);
+        console.log(futureDate);
 
-        state.defaultProjects[0].tasks.forEach((project) => {
-            if(isAfter(project.dueDate, pastDate) && isBefore(project.dueDate, futureDate) ) {
-                state.defaultProjects[2].tasks = state.defaultProjects[2].tasks.concat(project.tasks);
+        state.defaultProjects[0].tasks.forEach((task) => {
+            if(getYear(pastDate) === getYear(task.dueDate)) {
+                if(getMonth(pastDate) === getMonth(task.dueDate)) {
+                    if((getDate(pastDate) < getDate(task.dueDate)) && (getDate(task.dueDate) < getDate(futureDate))) {
+                        state.defaultProjects[2].tasks.push(task);
+                    }
+                }
             }
         });
+
         state.defaultProjects[2].sortTasks();
     };
 

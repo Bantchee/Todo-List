@@ -1,16 +1,18 @@
 import {task} from './scripts/task';
 import {page} from './scripts/renderPage';
 import './styles/index.css';
+import { directory } from './scripts/directory';
 
-const t = task('Wash Clothes', 'Put clothes in the washing machine', 'high', 'now', 'Chours');
+// Temp
+const lowTask = task("Low Task Title", "Cool Stuff to do", "low", '2022-10-14', 'temp1');
+const mediuemTask = task("Medium Task Title", "Cool Stuff to do", "medium", '2022-11-4', 'temp1');
+const highTask = task("High Task Title", "Cool Stuff to do", "high", '2022-6-27', 'temp1');
+const todayTask = task("Task Due tooday", "Cool Stuff to do", "high", '2022-10-14-2002', 'temp2');
+const sevenDayTask = task("Task do on seventh day", "Cool Stuff to do", "low", '2022-10-20', 'temp2');
+const nineDayTask = task("Task do on Ninth day", "Cool Stuff to do", "low", '2022-10-22', 'temp2');
+
+directory.getProject('temp1').addTask([lowTask, mediuemTask, highTask]);
+directory.getProject('temp2').addTask([todayTask, sevenDayTask, nineDayTask]);
 
 const p = page();
 p.render();
-
-// State
-    // directory.js module
-        // project.js factory
-            // task.js factory
-// DOM Rendering
-    // Render Static page, Including Sidebar menu
-        // Div#Content Dynamicly rendered, changes when clicking on project in sidebar menu

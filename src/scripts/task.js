@@ -3,8 +3,8 @@ import { format } from "date-fns";
 // In > Out : String String Priority Date Project > Object
 export const task = (title, details, priority, dueDate, projectName) => {
     const createDueDate = (value) => {
-        // Input > MM DD YYYY
-        // Output > YYY MM DD
+        // Input > YYYY MM DD
+        // Output > YYYY MM DD
         const arrValue = value.split('-');
         return new Date(parseInt(arrValue[0]), parseInt(arrValue[1]) - 1, parseInt(arrValue[2]));
     }

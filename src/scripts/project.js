@@ -27,8 +27,16 @@ export const project = (name) => {
     };
 
     // Add Task
-    const addTask = (task) => {
-        get('tasks').push(task);
+    const addTask = (tasks) => {
+        console.log(Array.isArray(tasks));
+        if(Array.isArray(tasks)) {
+            tasks.forEach((task) => {
+                get('tasks').push(task);
+            });
+        } 
+        else {
+            get('tasks').push(tasks);
+        }
     }
 
     // Get Task
@@ -48,6 +56,7 @@ export const project = (name) => {
 
     return Object.assign(
         state,
+        {set},
         {addTask},
         {deleteTask},
         {getTask},

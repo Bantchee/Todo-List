@@ -178,9 +178,7 @@ export const page = () => {
             // Bind functionality to delete buttons
             const deleteBtn = task.querySelector('.delete');
             deleteBtn.addEventListener('click', () => {
-                console.log(directory.currentProject.tasks);
                 directory.currentProject.deleteTask(index);
-                console.log(directory.currentProject.tasks);
                 render();
             });
         });
@@ -478,6 +476,7 @@ export const page = () => {
                         detailsPara.textContent = "Details";
                     // Para : Due Date
                     const dueDatePara = createElement('p', rightDiv, 'due-date');
+                    
                     dueDatePara.textContent = taskObject.returnFormatedDueDate();
             
                     // Btn : Edit Btn
