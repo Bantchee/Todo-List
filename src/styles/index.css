@@ -105,6 +105,10 @@ aside button.current-project {
     font-weight: bold;
 }
 
+aside .add-project .input-container .buttons {
+    display: flex;
+}
+
 /* Main */
 div.main {
     flex: 4;
