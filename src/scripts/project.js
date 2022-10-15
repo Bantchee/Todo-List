@@ -1,4 +1,3 @@
-import { task } from "./task";
 import { compareAsc } from "date-fns";
 
 // In > Out : String List-of-Tasks > Object
@@ -11,7 +10,7 @@ export const project = (name) => {
     // Get property
     const get = (property) => {
         if(state.hasOwnProperty(property)) {
-            return state[property] 
+            return state[property];
         } else {
             console.error(`The property ${property} does not exist`);
         }
@@ -51,7 +50,7 @@ export const project = (name) => {
 
     // Sort tasks
     const sortTasks = () => {
-        state.tasks.sort((a, b) => compareAsc(a.dueDate, b.dueDate));
+        state.tasks.sort((a, b) => compareAsc(a.createDueDate(a.dueDate), b.createDueDate(b.dueDate)));
     }
 
     return Object.assign(

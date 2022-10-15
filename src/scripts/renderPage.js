@@ -29,6 +29,7 @@ export const page = () => {
 
         setCurrentProject();
         update();
+        directory.saveStorage();
     };
 
     // adds the current-project class to current rendered project
@@ -476,7 +477,6 @@ export const page = () => {
                         detailsPara.textContent = "Details";
                     // Para : Due Date
                     const dueDatePara = createElement('p', rightDiv, 'due-date');
-                    
                     dueDatePara.textContent = taskObject.returnFormatedDueDate();
             
                     // Btn : Edit Btn

@@ -2,6 +2,19 @@ import { format } from "date-fns";
 
 // In > Out : String String Priority Date Project > Object
 export const task = (title, details, priority, dueDate, projectName) => {
+    
+
+    const state = {
+        title,
+        details,
+        priority,
+        dueDate: dueDate,
+        projectName,
+        id: null,
+    }
+
+    // CRUD : Create, Read, Update, Delete
+
     const createDueDate = (value) => {
         // Input > YYYY MM DD
         // Output > YYYY MM DD
@@ -9,19 +22,8 @@ export const task = (title, details, priority, dueDate, projectName) => {
         return new Date(parseInt(arrValue[0]), parseInt(arrValue[1]) - 1, parseInt(arrValue[2]));
     }
 
-    const state = {
-        title,
-        details,
-        priority,
-        dueDate: createDueDate(dueDate),
-        projectName,
-        id: null,
-    }
-
-    // CRUD : Create, Read, Update, Delete
-
     const returnFormatedDueDate = () => {
-        return format(state.dueDate, 'MM/dd/yyyy');
+        return format(createDueDate(state.dueDate), 'MM/dd/yyyy');
     }
 
     const genRandomId = () => Math.random();
@@ -52,5 +54,6 @@ export const task = (title, details, priority, dueDate, projectName) => {
         {get},
         {set},
         {returnFormatedDueDate},
+        {createDueDate},
     );
 };
