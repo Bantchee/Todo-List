@@ -1,446 +1,487 @@
 :root {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    --white: #ffffff;
-    --light-grey: #D9D9D9;
-    --dark-grey: #454545;
-    --black: #000000;
-    --black-tint: rgba(0, 0, 0, 0.50);
-    --blue: #0085FF;
-    --blue-light: #badcfc;
-    --orange: #FF9900;
-    --orange-light: #FAE7CC;
-    --red: #FF0000;
-    --red-light: #FCCECE;
-    --green: #33C500;
-    --light-green: #D7FFC9;
-    --github-img-size: 32px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --white: #ffffff;
+  --light-grey: #d9d9d9;
+  --dark-grey: #454545;
+  --black: #000000;
+  --black-tint: rgba(0, 0, 0, 0.5);
+  --blue: #0085ff;
+  --blue-light: #badcfc;
+  --orange: #ff9900;
+  --orange-light: #fae7cc;
+  --red: #ff0000;
+  --red-light: #fccece;
+  --green: #33c500;
+  --light-green: #d7ffc9;
+  --github-img-size: 32px;
 }
 
 :root p {
-    margin: 0px;
+  margin: 0px;
 }
 
 body {
-    display: flex;
-    margin: 0px;
-    /* Temp */
-    width: 100vw;
-    height: 100vh;
+  display: flex;
+  margin: 0px;
+  /* Temp */
+  width: 100vw;
+  height: 100vh;
 }
 
 /* Aside  */
 aside {
-    flex: 1;
-    padding: 8px;
-    background-color: var(--dark-grey);
+  flex: 1;
+  padding: 8px;
+  background-color: var(--dark-grey);
 
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 aside p {
-    font-size: 1.25em;
-    margin: 0px;
+  font-size: 1.25em;
+  margin: 0px;
 }
 
-aside .home-container, aside .project-container {
-    display: flex;
-    flex-direction: column;
+aside .home-container,
+aside .project-container {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Align Edit and Delete Buttons to the right side */
 aside button.project {
-    margin-right: auto;
+  margin-right: auto;
 }
 
-aside button.project, button.title {
-    display: flex;
-    align-items: center;
+aside button.project,
+button.title {
+  display: flex;
+  align-items: center;
 
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: var(--white);
-    font-size: 1.25em;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1.25em;
 }
 
-aside button.project:hover, button.title:hover {
-    font-weight: bold;
-    /* background-color: var(--light-grey); */
+aside button.project:hover,
+button.title:hover {
+  font-weight: bold;
+  /* background-color: var(--light-grey); */
 }
 
 aside div.add-project button {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: var(--white);
-    font-size: 1.25em;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1.25em;
 }
 
 aside div.add-project button:hover {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 aside button.title {
-    border-bottom: var(--white) solid 5px;
+  border-bottom: var(--white) solid 5px;
 }
 
 aside .home-container .default-projects {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 aside div.project-div {
-    display: flex;
+  display: flex;
 }
 
-aside img { 
-    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(248deg) brightness(106%) contrast(106%);
+aside img {
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(248deg)
+    brightness(106%) contrast(106%);
 }
 
 aside button.current-project {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 aside .add-project .input-container .buttons {
-    display: flex;
+  display: flex;
 }
 
 /* Main */
 div.main {
-    flex: 4;
+  flex: 4;
 
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 div.main header {
-    flex: 1;
-    padding: 8px;
-    /* Temp */
-    background-color: var(--light-grey);
+  flex: 1;
+  padding: 8px;
+  /* Temp */
+  background-color: var(--light-grey);
 
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center; 
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
 }
 
 div.main header button.menu {
-    background: none;
-    border: none;
-    cursor: pointer;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 div.main header h1.title {
-    padding-right: auto;
-    justify-self: center;
-    font-weight: bold;
-    font-size: 3em;
+  padding-right: auto;
+  justify-self: center;
+  font-weight: bold;
+  font-size: 3em;
 }
 
 div.main div.content {
-    flex: 4;
-    padding: 16px 64px;
-    background-color: var(--white);
+  flex: 4;
+  padding: 16px 64px;
+  background-color: var(--white);
 }
 
 /* Task Styling */
 
 div.main div.content div.task-container {
-    display: flex;
-    flex-direction: column;
-    row-gap: 8px; 
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
 }
 
 div.main div.content div.task {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    background-color: var(--light-grey);
-    border-radius: 4px;
+  background-color: var(--light-grey);
+  border-radius: 4px;
 
-    padding: 8px;
+  padding: 8px;
 }
 
 div.main div.content div.task-content {
-    display: flex;
+  display: flex;
 }
 
 div.main div.content div.low-task {
-    border-right: var(--blue) solid 4px;
-    border-left: var(--blue) solid 4px;
+  border-right: var(--blue) solid 4px;
+  border-left: var(--blue) solid 4px;
 }
 
 div.main div.content div.medium-task {
-    border-right: var(--orange) solid 4px;
-    border-left: var(--orange) solid 4px;
+  border-right: var(--orange) solid 4px;
+  border-left: var(--orange) solid 4px;
 }
 
 div.main div.content div.high-task {
-    border-right: var(--red) solid 4px;
-    border-left: var(--red) solid 4px;
+  border-right: var(--red) solid 4px;
+  border-left: var(--red) solid 4px;
 }
 
 div.main div.content div.left-side {
-    grid-area: left;
+  grid-area: left;
 
-    display: flex;
-    align-items: center;
-    column-gap: 4px;
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
 }
 
 div.main div.content div.left-side input {
-    margin: 0px;
+  margin: 0px;
 }
 
 div.main div.content div.right-side {
-    grid-area: right;
+  grid-area: right;
 
-    display: flex;
-    margin-left: auto;
-    align-items: center;
-    column-gap: 4px;
+  display: flex;
+  margin-left: auto;
+  align-items: center;
+  column-gap: 4px;
 }
 
 div.main div.content div.details-container {
-    margin: auto;
+  margin: auto;
 }
 
 div.main div.content .add-task-container {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 div.main div.content .add-task-container .add-task-btn {
-    width: 135px;
+  width: 135px;
 
-    display: flex;
-    column-gap: 4px;
-    align-self: center;
+  display: flex;
+  column-gap: 4px;
+  align-self: center;
 }
 
 div.main div.content .add-task-container .add-task-btn p {
-    font-size: 1.5em;
-    font-weight: bold;
-    cursor: pointer;
+  font-size: 1.5em;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 div.main div.content .add-task-container .add-task-btn img {
-    width: 24px;
+  width: 24px;
 }
 
 div.main div.content .add-task-container .input-container {
-    display: flex;
-    flex-direction: column;
-    row-gap: 4px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
 
-    background-color: var(--light-grey);
-    padding: 16px 24px;
-    border-radius: 4px;
-    border-right: var(--blue) solid 4px;
-    border-left: var(--blue) solid 4px;
+  background-color: var(--light-grey);
+  padding: 16px 24px;
+  border-radius: 4px;
+  border-right: var(--blue) solid 4px;
+  border-left: var(--blue) solid 4px;
 }
 
 div.main div.content .add-task-container .input-container p {
-    margin: 0px;
-    font-weight: bold;
+  margin: 0px;
+  font-weight: bold;
 }
 
 div.main div.content .add-task-container .input-container input.title {
-    border-radius: 8px;
-    padding-left: 4px;
+  border-radius: 8px;
+  padding-left: 4px;
 }
 
 div.main div.content .add-task-container .input-container textarea {
-    height: 150px;
-    border-radius: 8px;
-    padding-left: 4px;
+  height: 150px;
+  border-radius: 8px;
+  padding-left: 4px;
 }
 
 div.main div.content .add-task-container .input-container div.date-project {
-    display: flex;
-    column-gap: 16px;
+  display: flex;
+  column-gap: 16px;
 }
 
 div.main div.content .add-task-container .input-container div.due-date {
-    display: flex;
-    column-gap: 4px;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  column-gap: 4px;
+  justify-content: center;
+  align-items: center;
 
-    font-weight: bold;
+  font-weight: bold;
 }
 
 div.main div.content .add-task-container .input-container div.project {
-    display: flex;
-    column-gap: 4px;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  column-gap: 4px;
+  justify-content: center;
+  align-items: center;
 
-    font-weight: bold;
+  font-weight: bold;
 }
 
 div.main div.content .add-task-container .input-container .priority-add-cancel {
-    display: flex;
-    row-gap: 4px;
-    column-gap: 24px;
-    align-items: center;
+  display: flex;
+  row-gap: 4px;
+  column-gap: 24px;
+  align-items: center;
 }
 
 div.main div.content .add-task-container .input-container .priorities {
-    display: flex;
-    column-gap: 4px;
-    align-items: center;
+  display: flex;
+  column-gap: 4px;
+  align-items: center;
 }
 
-div.main div.content .add-task-container .input-container .priorities .priority {
-    width: 100px;
-    border-radius: 4px;
-    padding: 4px 0px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+div.main
+  div.content
+  .add-task-container
+  .input-container
+  .priorities
+  .priority {
+  width: 100px;
+  border-radius: 4px;
+  padding: 4px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 div.main div.content .add-task-container .input-container .priorities .low {
-    background-color: var(--blue-light);
-    color: var(--blue);
-    border-left: var(--blue) solid 4px;
-    border-right: var(--blue) solid 4px;
+  background-color: var(--blue-light);
+  color: var(--blue);
+  border-left: var(--blue) solid 4px;
+  border-right: var(--blue) solid 4px;
 }
 
-div.main div.content .add-task-container .input-container .priorities .low:hover {
-    cursor: pointer;
-    background-color: var(--blue);
-    color: var(--blue-light);
+div.main
+  div.content
+  .add-task-container
+  .input-container
+  .priorities
+  .low:hover {
+  cursor: pointer;
+  background-color: var(--blue);
+  color: var(--blue-light);
 }
 
-div.main div.content .add-task-container .input-container .priorities .active-low {
-    background-color: var(--blue);
-    color: var(--blue-light);
+div.main
+  div.content
+  .add-task-container
+  .input-container
+  .priorities
+  .active-low {
+  background-color: var(--blue);
+  color: var(--blue-light);
 }
 
 div.main div.content .add-task-container .input-container .priorities .medium {
-    background-color: var(--orange-light);
-    color: var(--orange);
-    border-left: var(--orange) solid 4px;
-    border-right: var(--orange) solid 4px;
+  background-color: var(--orange-light);
+  color: var(--orange);
+  border-left: var(--orange) solid 4px;
+  border-right: var(--orange) solid 4px;
 }
 
-div.main div.content .add-task-container .input-container .priorities .medium:hover {
-    cursor: pointer;
-    background-color: var(--orange);
-    color: var(--orange-light);
+div.main
+  div.content
+  .add-task-container
+  .input-container
+  .priorities
+  .medium:hover {
+  cursor: pointer;
+  background-color: var(--orange);
+  color: var(--orange-light);
 }
 
-div.main div.content .add-task-container .input-container .priorities .active-medium {
-    background-color: var(--orange);
-    color: var(--orange-light);
+div.main
+  div.content
+  .add-task-container
+  .input-container
+  .priorities
+  .active-medium {
+  background-color: var(--orange);
+  color: var(--orange-light);
 }
 
 div.main div.content .add-task-container .input-container .priorities .high {
-    background-color: var(--red-light);
-    color: var(--red);
-    border-left: var(--red) solid 4px;
-    border-right: var(--red) solid 4px;
+  background-color: var(--red-light);
+  color: var(--red);
+  border-left: var(--red) solid 4px;
+  border-right: var(--red) solid 4px;
 }
 
-div.main div.content .add-task-container .input-container .priorities .high:hover {
-    cursor: pointer;
-    background-color: var(--red);
-    color: var(--red-light);
+div.main
+  div.content
+  .add-task-container
+  .input-container
+  .priorities
+  .high:hover {
+  cursor: pointer;
+  background-color: var(--red);
+  color: var(--red-light);
 }
 
-div.main div.content .add-task-container .input-container .priorities .active-high {
-    background-color: var(--red);
-    color: var(--red-light);
+div.main
+  div.content
+  .add-task-container
+  .input-container
+  .priorities
+  .active-high {
+  background-color: var(--red);
+  color: var(--red-light);
 }
 
 div.main div.content .add-task-container .input-container .add-cancel {
-    display: flex;
-    justify-self: right;
-    column-gap: 4px;
-    margin-left: auto;
+  display: flex;
+  justify-self: right;
+  column-gap: 4px;
+  margin-left: auto;
 }
 
 div.main div.content .add-task-container .input-container .add {
-    width: 100px;
-    border-radius: 4px;
-    padding: 4px 0px;
+  width: 100px;
+  border-radius: 4px;
+  padding: 4px 0px;
 
-    background-color: var(--light-green);
-    color: var(--green);
-    border-left: var(--green) solid 4px;
-    border-right: var(--green) solid 4px;
+  background-color: var(--light-green);
+  color: var(--green);
+  border-left: var(--green) solid 4px;
+  border-right: var(--green) solid 4px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 div.main div.content .add-task-container .input-container .add:hover {
-    cursor: pointer;
-    background-color: var(--green);
-    color: var(--light-green);
+  cursor: pointer;
+  background-color: var(--green);
+  color: var(--light-green);
 }
 
 div.main div.content .add-task-container .input-container .cancel {
-    width: 100px;
-    border-radius: 4px;
-    padding: 4px 0px;
-    background-color: var(--red-light);
-    color: var(--red);
-    border-left: var(--red) solid 4px;
-    border-right: var(--red) solid 4px;
+  width: 100px;
+  border-radius: 4px;
+  padding: 4px 0px;
+  background-color: var(--red-light);
+  color: var(--red);
+  border-left: var(--red) solid 4px;
+  border-right: var(--red) solid 4px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 div.main div.content .add-task-container .input-container .cancel:hover {
-    cursor: pointer;
-    background-color: var(--red);
-    color: var(--red-light);
+  cursor: pointer;
+  background-color: var(--red);
+  color: var(--red-light);
 }
 
 div.main footer {
-    flex: 1;
-    padding: 8px;
-    background-color: var(--light-grey);
+  flex: 1;
+  padding: 8px;
+  background-color: var(--light-grey);
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    column-gap: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 16px;
 }
 
 div.main footer p.text {
-    font-size: 1.25em;
-    font-weight: bold;
+  font-size: 1.25em;
+  font-weight: bold;
 }
 
 div.main footer a {
-    border: 3px solid var(--black);
-    border-radius: 100%;
-    width: var(--github-img-size);
-    height: var(--github-img-size);
-    background-color: var(--white);
-    padding: 6px;
+  border: 3px solid var(--black);
+  border-radius: 100%;
+  width: var(--github-img-size);
+  height: var(--github-img-size);
+  background-color: var(--white);
+  padding: 6px;
 }
 
 div.main footer a:hover {
-    background-color: var(--black);
+  background-color: var(--black);
 }
 
 div.main footer a:hover img {
-    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(248deg) brightness(106%) contrast(106%);
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(248deg)
+    brightness(106%) contrast(106%);
 }
 
 div.main footer a img {
-    width: var(--github-img-size);
-    height: var(--github-img-size);
+  width: var(--github-img-size);
+  height: var(--github-img-size);
 }
