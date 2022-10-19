@@ -1,4 +1,4 @@
-import { getDate, getMonth, getYear, isAfter, isEqual } from 'date-fns';
+import { getDate, getMonth, getYear } from 'date-fns';
 import {project} from './project';
 import {task} from './task';
 
@@ -90,7 +90,7 @@ export const directory = (() => {
     };
 
     const saveStorage = () => {
-        state.createdProjects.forEach((project, index) => {
+        state.createdProjects.forEach((project) => {
             localStorage.setItem(project.name, JSON.stringify(project.tasks));
         });   
     };

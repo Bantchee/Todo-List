@@ -80,7 +80,7 @@ export const page = () => {
             }    
         });
         
-        projects.forEach((projectElement, index) => {
+        projects.forEach((projectElement) => {
             projectElement.addEventListener('click', () => {
                 let projectState;
                 for(let i = 0; i < directory.defaultProjects.length; i++) {
@@ -186,11 +186,9 @@ export const page = () => {
     };
 
     const updateProject = () => {
-        // created projects container
-        const projectsContainer = state.sideBar.querySelector('.created-projects');
         // Get Projects
         const projects = state.sideBar.querySelectorAll('.project-div');
-        projects.forEach((project, index) => {
+        projects.forEach((project) => {
             // Project Btn
             // Edit Btn
             // Delete Btn
@@ -215,7 +213,7 @@ export const page = () => {
         // Priority btns
         const priorityBtns = addTaskInputContainer.querySelectorAll('.priority');
         
-        priorityBtns.forEach((priority, index) => {
+        priorityBtns.forEach((priority) => {
             priority.addEventListener('click', () => {
                 // if priority is low, set background to blue
                 if(priority.classList.contains('low')) {
@@ -396,7 +394,7 @@ export const page = () => {
                                 deleteImg.setAttribute('src', deleteSvg);
                     }
                 // Render Create New Project Form
-                const addProjectsContainer = addProjectElement(projectsContainer);
+                addProjectElement(projectsContainer);
         return sideBar;
     };
 
@@ -421,6 +419,7 @@ export const page = () => {
         const inputContainer = createElement('div', parent, 'input-container');
             // Input 
             const input = createElement('input', inputContainer);
+            input.class.add('.input');
             // Div : Btn Container
             const btnContainer = createElement('div', inputContainer, 'buttons');
                 // Btn : Add

@@ -9,20 +9,12 @@ export const project = (name) => {
 
     // Get property
     const get = (property) => {
-        if(state.hasOwnProperty(property)) {
-            return state[property];
-        } else {
-            console.error(`The property ${property} does not exist`);
-        }
+        return state[property];
     };
 
     // Set property
     const set = (property, value) => {
-        if(state.hasOwnProperty(property)) {
-            state[property] = value;
-        } else {
-            console.error(`The property ${property} does not exist`);
-        }
+        state[property] = value;
     };
 
     // Add Task

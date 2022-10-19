@@ -29,19 +29,11 @@ export const task = (title, details, priority, dueDate, projectName) => {
     const genRandomId = () => Math.random();
 
     const get = (property) => {
-        if(state.hasOwnProperty(property)) {
-            return state[property] 
-        } else {
-            console.error(`The property ${property} does not exist`);
-        }
+        return state[property] 
     };
 
     const set = (property, value) => {
-        if(state.hasOwnProperty(property)) {
-            state[property] = value;
-        } else {
-            console.error(`The property ${property} does not exist`);
-        }
+        state[property] = value;
     };
 
     // Change Project
