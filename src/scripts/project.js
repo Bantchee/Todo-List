@@ -30,8 +30,8 @@ export const project = (name) => {
   };
 
   // Get Task
-  const getTask = (title) => {
-    get("tasks").filter((task) => task.title === title);
+  const getTask = (id) => {
+    return state.tasks.find((task) => task.id === id);
   };
 
   // Delete Task

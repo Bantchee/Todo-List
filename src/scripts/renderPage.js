@@ -21,6 +21,8 @@ export const page = () => {
 
   const render = () => {
     clear();
+    directory.saveCreatedProjects();
+
     state.sideBar = renderSideBar();
     state.main = createElement("div", document.body, "main");
     state.header = renderHeader();
@@ -29,7 +31,6 @@ export const page = () => {
 
     setCurrentProject();
     update();
-    directory.saveStorage();
   };
 
   // adds the current-project class to current rendered project
@@ -185,7 +186,16 @@ export const page = () => {
       // Bind functionality to delete buttons
       const deleteBtn = task.querySelector(".delete");
       deleteBtn.addEventListener("click", () => {
-        directory.currentProject.deleteTask(index);
+        if((directory.currentProject.name === 'inbox')
+            || (directory.currentProject.name === 'today')
+            || (directory.currentProject.name === 'upcoming')) {
+          const task = directory.currentProject.tasks[index];
+          const actualProject = directory.getProject(task.projectName);
+          actualProject.deleteTask(actualProject.tasks.findIndex((t) => Object.is(t, task)));
+          directory.currentProject.deleteTask(index);
+        } else {
+          //directory.currentProject.deleteTask(index);
+        }
         render();
       });
     });
@@ -461,8 +471,7 @@ export const page = () => {
     // Div : Input Container
     const inputContainer = createElement("div", parent, "input-container");
     // Input
-    const input = createElement("input", inputContainer);
-    input.class.add(".input");
+    const input = createElement("input", inputContainer, "input");
     // Div : Btn Container
     const btnContainer = createElement("div", inputContainer, "buttons");
     // Btn : Add

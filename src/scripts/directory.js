@@ -95,7 +95,8 @@ export const directory = (() => {
     state.defaultProjects[2].sortTasks();
   };
 
-  const saveStorage = () => {
+  const saveCreatedProjects = () => {
+    localStorage.clear();
     state.createdProjects.forEach((project) => {
       localStorage.setItem(project.name, JSON.stringify(project.tasks));
     });
@@ -103,13 +104,13 @@ export const directory = (() => {
 
   const loadStorage = () => {
     if (Object.keys(localStorage).length === 0) {
-      saveStorage();
+      saveCreatedProjects();
     } else {
-      loadCreatedProject();
+      loadCreatedProjects();
     }
   };
 
-  const loadCreatedProject = () => {
+  const loadCreatedProjects = () => {
     // Loop through project names in localStorage
     for (let i = 0; i < localStorage.length; i++) {
       // Create new project using localStorage projectName
@@ -154,6 +155,6 @@ export const directory = (() => {
     { updateIndexTasks },
     { updateTodayTasks },
     { updateUpcomingTasks },
-    { saveStorage }
+    { saveCreatedProjects }
   );
 })();
